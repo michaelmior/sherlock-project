@@ -177,6 +177,7 @@ def extract_features(output_filename, data: Union[pd.DataFrame, pd.Series]):
             extract_bag_of_characters_features(raw_sample, features)
             extract_word_embeddings_features(raw_sample, features)
             extract_bag_of_words_features(raw_sample, features, n_samples)
+            extract_regexes_features(raw_sample, features, n_samples)
 
             # TODO use data_no_null version?
             infer_paragraph_embeddings_features(

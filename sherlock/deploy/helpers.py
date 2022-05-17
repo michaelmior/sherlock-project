@@ -14,7 +14,7 @@ def categorize_features() -> dict:
         Dictionary with lists of feature identifiers per feature set.
     """
     feature_cols_dict = {}
-    for feature_set in ["char", "word", "par", "rest"]:
+    for feature_set in ["char", "word", "par", "regex", "rest"]:
         feature_cols_dict[feature_set] = pd.read_csv(
             f"sherlock/features/feature_column_identifiers/{feature_set}_col.tsv",
             sep="\t",

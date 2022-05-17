@@ -14,6 +14,7 @@ from sherlock.features.bag_of_characters import extract_bag_of_characters_featur
 from sherlock.features.bag_of_words import extract_bag_of_words_features
 from sherlock.features.word_embeddings import extract_word_embeddings_features
 from sherlock.features.paragraph_vectors import infer_paragraph_embeddings_features
+from sherlock.features.regexes import extract_regexes_features
 from sherlock.features.helpers import literal_eval_as_str, keys_to_csv
 from sherlock.global_state import is_first, set_first, reset_first
 
@@ -49,9 +50,15 @@ def normalise_string_whitespace(col_values: list):
 def extract_features(col_values: list):
     features = OrderedDict()
 
+    n_samples = 1000
+    n_values = len(col_values)
+    if n_samples > n_values:
+        n_samples = n_values
+
     extract_bag_of_characters_features(col_values, features)
     extract_word_embeddings_features(col_values, features)
-    extract_bag_of_words_features(col_values, features, len(col_values))
+    extract_bag_of_words_features(col_values, features, n_values)
+    extract_regexes_features(col_values, features, n_values)
     infer_paragraph_embeddings_features(col_values, features, dim=400, reuse_model=True)
 
     return features

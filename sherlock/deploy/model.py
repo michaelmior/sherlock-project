@@ -1,4 +1,5 @@
 import os
+import sys
 
 import numpy as np
 import pandas as pd
@@ -29,6 +30,11 @@ class SherlockModel:
     def fit(
         self, X_train: pd.DataFrame, y_train, X_val: pd.DataFrame, y_val, model_id: str
     ):
+        return fit_many([X_train], y_train, X_val, y_val, model_id)
+
+    def fit(
+        self, X_train, y_train, X_val, y_val, model_id
+    ):
         if model_id == "sherlock":
             raise ValueError(
                 "`model_id` cannot be `sherlock` to avoid overwriting the original model weights."
@@ -40,13 +46,10 @@ class SherlockModel:
 
         feature_cols = helpers.categorize_features()
 
-        X_train_char = X_train[feature_cols["char"]]
-        X_train_word = X_train[feature_cols["word"]]
-        X_train_par = X_train[feature_cols["par"]]
-        X_train_rest = X_train[feature_cols["rest"]]
         X_val_char = X_val[feature_cols["char"]]
         X_val_word = X_val[feature_cols["word"]]
         X_val_par = X_val[feature_cols["par"]]
+        X_val_regex = X_val[feature_cols["regex"]]
         X_val_rest = X_val[feature_cols["rest"]]
 
         y_train_int = encoder.transform(y_train)
@@ -56,18 +59,19 @@ class SherlockModel:
 
         callbacks = [EarlyStopping(monitor="val_loss", patience=5)]
 
-        char_model_input, char_model = self._build_char_submodel(X_train_char.shape[1])
-        word_model_input, word_model = self._build_word_submodel(X_train_word.shape[1])
-        par_model_input, par_model = self._build_par_submodel(X_train_par.shape[1])
-        rest_model_input, rest_model = self._build_rest_submodel(X_train_rest.shape[1])
+        char_model_input, char_model = self._build_char_submodel(len(feature_cols["char"]))
+        word_model_input, word_model = self._build_word_submodel(len(feature_cols["word"]))
+        par_model_input, par_model = self._build_par_submodel(len(feature_cols["par"]))
+        regex_model_input, regex_model = self._build_regex_submodel(len(feature_cols["regex"]))
+        rest_model_input, rest_model = self._build_rest_submodel(len(feature_cols["rest"]))
 
         # Merge submodels and build main network
-        merged_model1 = concatenate([char_model, word_model, par_model, rest_model])
+        merged_model1 = concatenate([char_model, word_model, par_model, regex_model, rest_model])
 
         merged_model_output = self._add_main_layers(merged_model1, num_classes)
 
         model = Model(
-            [char_model_input, word_model_input, par_model_input, rest_model_input],
+            [char_model_input, word_model_input, par_model_input, regex_model_input, rest_model_input],
             merged_model_output,
         )
 
@@ -77,27 +81,40 @@ class SherlockModel:
             metrics=["categorical_accuracy"],
         )
 
-        model.fit(
-            [
-                X_train_char.values,
-                X_train_word.values,
-                X_train_par.values,
-                X_train_rest.values,
-            ],
-            y_train_cat,
-            validation_data=(
-                [
-                    X_val_char.values,
-                    X_val_word.values,
-                    X_val_par.values,
-                    X_val_rest.values,
+        sample_start = 0
+        for (i, X) in enumerate(X_train):
+            sys.stderr.write(f'Batch {i + 1}...\n')
+            X_len = len(X)
+            X_train_char = X[feature_cols["char"]]
+            X_train_word = X[feature_cols["word"]]
+            X_train_par = X[feature_cols["par"]]
+            X_train_regex = X[feature_cols["regex"]]
+            X_train_rest = X[feature_cols["rest"]]
+
+            model.fit(
+                x=[
+                    X_train_char.values,
+                    X_train_word.values,
+                    X_train_par.values,
+                    X_train_regex.values,
+                    X_train_rest.values,
                 ],
-                y_val_cat,
-            ),
-            callbacks=callbacks,
-            epochs=100,
-            batch_size=256,
-        )
+                y=y_train_cat[sample_start:sample_start + X_len],
+                validation_data=(
+                    [
+                        X_val_char.values,
+                        X_val_word.values,
+                        X_val_par.values,
+                        X_val_regex.values,
+                        X_val_rest.values,
+                    ],
+                    y_val_cat[:len(X_val)],
+                ),
+                callbacks=callbacks,
+                epochs=100,
+            )
+
+            sample_start += X_len
 
         self.model = model
 
@@ -268,6 +285,25 @@ class SherlockModel:
         )(par_model3)
 
         return par_model_input, par_model4
+
+    def _build_regex_submodel(self, regex_shape):
+        n_weights = 1000
+
+        regex_model_input = Input(shape=(regex_shape,))
+        regex_model1 = BatchNormalization(axis=1)(regex_model_input)
+        regex_model2 = Dense(
+            n_weights,
+            activation=tf.nn.relu,
+            kernel_regularizer=tf.keras.regularizers.l2(self.lamb),
+        )(regex_model1)
+        regex_model3 = Dropout(self.do)(regex_model2)
+        regex_model4 = Dense(
+            n_weights,
+            activation=tf.nn.relu,
+            kernel_regularizer=tf.keras.regularizers.l2(self.lamb),
+        )(regex_model3)
+
+        return regex_model_input, regex_model4
 
     def _build_rest_submodel(self, rest_shape):
 
