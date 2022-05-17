@@ -17,7 +17,7 @@ def initialise_word_embeddings():
     global word_to_embedding
 
     print("Initialising word embeddings")
-    word_vectors_f = open('../sherlock/features/glove.6B.50d.txt', encoding='utf-8')
+    word_vectors_f = open('sherlock/features/glove.6B.50d.txt', encoding='utf-8')
 
     for w in word_vectors_f:
         term, vector = w.strip().split(' ', 1)

@@ -67,7 +67,7 @@ def train_paragraph_embeddings_features(columns, dim):
     )
 
     # Save trained model
-    model_file = f"../sherlock/features/par_vec_trained_{dim}.pkl"
+    model_file = f"sherlock/features/par_vec_trained_{dim}.pkl"
 
     train_model.save(model_file)
     train_model.delete_temporary_training_data(
@@ -83,7 +83,7 @@ def initialise_pretrained_model(dim):
     start = datetime.now()
     global model
 
-    filename = f"../sherlock/features/par_vec_trained_{dim}.pkl"
+    filename = f"sherlock/features/par_vec_trained_{dim}.pkl"
 
     assert dim == DIM
 

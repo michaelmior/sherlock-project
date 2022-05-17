@@ -15,21 +15,22 @@ from sherlock.features.bag_of_characters import extract_bag_of_characters_featur
 from sherlock.features.bag_of_words import extract_bag_of_words_features
 from sherlock.features.word_embeddings import extract_word_embeddings_features
 from sherlock.features.paragraph_vectors import infer_paragraph_embeddings_features
+from sherlock.features.regexes import extract_regexes_features
 from sherlock.global_state import set_first, reset_first
 from sherlock.features.helpers import literal_eval_as_str, keys_to_csv
 
 
 def prepare_feature_extraction():
     """Download embedding files from Google Drive if they do not exist yet."""
-    word_embedding_file = "../sherlock/features/glove.6B.50d.txt"
+    word_embedding_file = "sherlock/features/glove.6B.50d.txt"
     first_paragraph_vector_file = (
-        "../sherlock/features/par_vec_trained_400.pkl.docvecs.vectors_docs.npy"
+        "sherlock/features/par_vec_trained_400.pkl.docvecs.vectors_docs.npy"
     )
     second_paragraph_vector_file = (
-        "../sherlock/features/par_vec_trained_400.pkl.trainables.syn1neg.npy"
+        "sherlock/features/par_vec_trained_400.pkl.trainables.syn1neg.npy"
     )
     third_paragraph_vector_file = (
-        "../sherlock/features/par_vec_trained_400.pkl.wv.vectors.npy"
+        "sherlock/features/par_vec_trained_400.pkl.wv.vectors.npy"
     )
 
     print(

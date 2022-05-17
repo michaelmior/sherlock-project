@@ -32,7 +32,7 @@ CHARACTERS_TO_CHECK = (
 # generate_chars_col()
 def generate_chars_col():
     idx = 0
-    with open("../sherlock/features/feature_column_identifiers/char_col.tsv", "w") as char_col:
+    with open("sherlock/features/feature_column_identifiers/char_col.tsv", "w") as char_col:
         for c in CHARACTERS_TO_CHECK:
             for operation in ('any', 'all', 'mean', 'var', 'min', 'max', 'median', 'sum', 'kurtosis', 'skewness'):
                 col_header = f'n_{c}-agg-{operation}'
