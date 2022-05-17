@@ -1,0 +1,38 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+certifi = "==2019.6.16"
+gensim = "==3.8.0"
+h5py = "*"
+joblib = "*"
+jupyter = "==1.0.0"
+nltk = "==3.4.5"
+matplotlib = "*"
+numpy = "*"
+pandas = "*"
+pre-commit = "*"
+pyarrow = "*"
+pyfunctional = "==1.4.3"
+python-dateutil = "==2.8.2"
+pytest = "==6.2.5"
+pytz = "*"
+regex = "==2022.1.18"
+scikit-learn = "1.1.0"
+scipy = "*"
+tensorboard = "*"
+tensorflow = "*"
+tensorflow-estimator = "*"
+tqdm = "==4.51.0"
+sherlock = {editable = true, file = "file:///home/mmior/apps/sherlock"}
+hyperscan = "*"
+pyspark = "*"
+
+[dev-packages]
+gdown = "*"
+line-profiler = "==3.3.1"
+
+[requires]
+python_version = "3.8"
