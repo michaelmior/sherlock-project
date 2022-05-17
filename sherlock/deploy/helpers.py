@@ -20,8 +20,7 @@ def categorize_features() -> dict:
             sep="\t",
             index_col=0,
             header=None,
-            squeeze=True,
-        ).to_list()
+        ).squeeze("columns").to_list()
     return feature_cols_dict
 
 

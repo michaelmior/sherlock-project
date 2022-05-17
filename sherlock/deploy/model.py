@@ -72,7 +72,7 @@ class SherlockModel:
         )
 
         model.compile(
-            optimizer=tf.keras.optimizers.Adam(lr=self.lr),
+            optimizer=tf.keras.optimizers.Adam(learning_rate=self.lr),
             loss="categorical_crossentropy",
             metrics=["categorical_accuracy"],
         )
@@ -193,7 +193,7 @@ class SherlockModel:
             model.load_weights(weights_filename)
 
         model.compile(
-            optimizer=tf.keras.optimizers.Adam(lr=self.lr),
+            optimizer=tf.keras.optimizers.Adam(learning_rate=self.lr),
             loss="categorical_crossentropy",
             metrics=["categorical_accuracy"],
         )
