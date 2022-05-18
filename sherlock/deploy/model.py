@@ -46,32 +46,34 @@ class SherlockModel:
 
         feature_cols = helpers.categorize_features()
 
-        X_val_char = X_val[feature_cols["char"]]
-        X_val_word = X_val[feature_cols["word"]]
-        X_val_par = X_val[feature_cols["par"]]
-        X_val_regex = X_val[feature_cols["regex"]]
-        X_val_rest = X_val[feature_cols["rest"]]
+        # X_val_char = X_val[feature_cols["char"]]
+        # X_val_word = X_val[feature_cols["word"]]
+        # X_val_par = X_val[feature_cols["par"]]
+        # X_val_regex = X_val[feature_cols["regex"]]
+        # X_val_rest = X_val[feature_cols["rest"]]
 
         y_train_int = encoder.transform(y_train)
-        y_val_int = encoder.transform(y_val)
+        # y_val_int = encoder.transform(y_val)
         y_train_cat = tf.keras.utils.to_categorical(y_train_int)
-        y_val_cat = tf.keras.utils.to_categorical(y_val_int)
+        # y_val_cat = tf.keras.utils.to_categorical(y_val_int)
 
         callbacks = [EarlyStopping(monitor="val_loss", patience=5)]
 
         char_model_input, char_model = self._build_char_submodel(len(feature_cols["char"]))
         word_model_input, word_model = self._build_word_submodel(len(feature_cols["word"]))
         par_model_input, par_model = self._build_par_submodel(len(feature_cols["par"]))
-        regex_model_input, regex_model = self._build_regex_submodel(len(feature_cols["regex"]))
+        # regex_model_input, regex_model = self._build_regex_submodel(len(feature_cols["regex"]))
         rest_model_input, rest_model = self._build_rest_submodel(len(feature_cols["rest"]))
 
         # Merge submodels and build main network
-        merged_model1 = concatenate([char_model, word_model, par_model, regex_model, rest_model])
+        # merged_model1 = concatenate([char_model, word_model, par_model, regex_model, rest_model])
+        merged_model1 = concatenate([char_model, word_model, par_model, rest_model])
 
         merged_model_output = self._add_main_layers(merged_model1, num_classes)
 
         model = Model(
-            [char_model_input, word_model_input, par_model_input, regex_model_input, rest_model_input],
+            # [char_model_input, word_model_input, par_model_input, regex_model_input, rest_model_input],
+            [char_model_input, word_model_input, par_model_input, rest_model_input],
             merged_model_output,
         )
 
@@ -88,7 +90,7 @@ class SherlockModel:
             X_train_char = X[feature_cols["char"]]
             X_train_word = X[feature_cols["word"]]
             X_train_par = X[feature_cols["par"]]
-            X_train_regex = X[feature_cols["regex"]]
+            # X_train_regex = X[feature_cols["regex"]]
             X_train_rest = X[feature_cols["rest"]]
 
             model.fit(
@@ -96,20 +98,22 @@ class SherlockModel:
                     X_train_char.values,
                     X_train_word.values,
                     X_train_par.values,
-                    X_train_regex.values,
+                    # X_train_regex.values,
                     X_train_rest.values,
                 ],
                 y=y_train_cat[sample_start:sample_start + X_len],
-                validation_data=(
-                    [
-                        X_val_char.values,
-                        X_val_word.values,
-                        X_val_par.values,
-                        X_val_regex.values,
-                        X_val_rest.values,
-                    ],
-                    y_val_cat[:len(X_val)],
-                ),
+                validation_data=X_val,
+                validation_steps=5,
+                # validation_data=(
+                #     [
+                #         X_val_char.values,
+                #         X_val_word.values,
+                #         X_val_par.values,
+                #         X_val_regex.values,
+                #         X_val_rest.values,
+                #     ],
+                #     y_val_cat[:len(X_val)],
+                # ),
                 callbacks=callbacks,
                 epochs=100,
             )
