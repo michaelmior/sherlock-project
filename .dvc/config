@@ -1,5 +1,7 @@
 [core]
     remote = sporc
     autostage = true
+[cache]
+    type = symlink
 ['remote "sporc"']
     url = ssh://sporcsubmit.rc.rit.edu:/shared/rc/miordata/sherlock-dvc
