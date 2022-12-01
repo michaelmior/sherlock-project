@@ -4,6 +4,7 @@ import gensim.models.doc2vec
 from collections import OrderedDict
 import pandas as pd
 import nltk
+import os
 from nltk.corpus import stopwords
 
 from gensim.models.doc2vec import Doc2Vec, TaggedDocument
@@ -67,7 +68,7 @@ def train_paragraph_embeddings_features(columns, dim):
     )
 
     # Save trained model
-    model_file = f"sherlock/features/par_vec_trained_{dim}.pkl"
+    model_file = os.path.join(os.path.dirname(__file__), f'par_vec_trained_{dim}.pkl')
 
     train_model.save(model_file)
     train_model.delete_temporary_training_data(
@@ -83,7 +84,7 @@ def initialise_pretrained_model(dim):
     start = datetime.now()
     global model
 
-    filename = f"sherlock/features/par_vec_trained_{dim}.pkl"
+    filename = os.path.join(os.path.dirname(__file__), f'par_vec_trained_{dim}.pkl')
 
     assert dim == DIM
 

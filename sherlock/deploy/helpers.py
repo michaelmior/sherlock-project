@@ -1,3 +1,5 @@
+import os
+
 import numpy as np
 import pandas as pd
 import tensorflow as tf
@@ -16,7 +18,7 @@ def categorize_features() -> dict:
     feature_cols_dict = {}
     for feature_set in ["char", "word", "par", "regex", "rest"]:
         feature_cols_dict[feature_set] = pd.read_csv(
-            f"sherlock/features/feature_column_identifiers/{feature_set}_col.tsv",
+            os.path.join(os.path.dirname(__file__), '..', 'features', 'feature_column_identifiers', f'{feature_set}_col.tsv'),
             sep="\t",
             index_col=0,
             header=None,
@@ -82,7 +84,7 @@ def _proba_to_classes(y_pred, model_id: str = "sherlock") -> np.array:
     y_pred_int = np.argmax(y_pred, axis=1)
     encoder = LabelEncoder()
     encoder.classes_ = np.load(
-        f"model_files/classes_{model_id}.npy", allow_pickle=True
+        os.path.join(os.path.dirname(__file__), '..', '..', 'model_files', f'classes_{model_id}.npy'), allow_pickle=True
     )
 
     y_pred = encoder.inverse_transform(y_pred_int)
