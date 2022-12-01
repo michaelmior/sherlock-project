@@ -95,6 +95,7 @@ data/*
 
 # retrained doc2vec files
 sherlock/features/par_vec_retrained_*
+sherlock/features/hs.db
 
 # SageMath parsed files
 *.sage.py
