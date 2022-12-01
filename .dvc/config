@@ -1,4 +1,5 @@
 [core]
     remote = sporc
+    autostage = true
 ['remote "sporc"']
     url = ssh://sporcsubmit.rc.rit.edu:/shared/rc/miordata/sherlock-dvc

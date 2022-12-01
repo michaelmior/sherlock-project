@@ -1,0 +1,4 @@
+outs:
+- md5: 12478c3ea87a9ec00428a8286b94dfc3
+  size: 595870528
+  path: par_vec_trained_400.pkl.trainables.syn1neg.npy
