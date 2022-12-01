@@ -1,0 +1,4 @@
+outs:
+- md5: 1101959fe591c0406905497a0ea263ef
+  size: 1949
+  path: temporary.parquet

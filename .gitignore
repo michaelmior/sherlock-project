@@ -84,13 +84,10 @@ celerybeat-schedule
 # additional files/directories
 glove.6B.50d.txt
 par_vec_trained_400.pkl.docvecs.vectors_docs.npy
-data/data/
 data/work/
-data/processed
-data/raw
-data.zip
+data/data.zip
 model_files/
-data/*
+data/data/**/*.parquet
 *.npy
 
 # retrained doc2vec files
