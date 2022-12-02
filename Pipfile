@@ -26,7 +26,6 @@ tensorboard = "*"
 tensorflow = "*"
 tensorflow-estimator = "*"
 tqdm = "==4.51.0"
-sherlock = {editable = true, file = "file:///home/mmior/apps/sherlock"}
 hyperscan = "*"
 pyspark = "*"
 gdown = "*"
