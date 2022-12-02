@@ -4,6 +4,7 @@ import sys
 import numpy as np
 import pandas as pd
 import tensorflow as tf
+from more_itertools import windowed
 
 from sklearn.preprocessing import LabelEncoder
 from tensorflow.keras.callbacks import EarlyStopping
@@ -46,16 +47,16 @@ class SherlockModel:
 
         feature_cols = helpers.categorize_features()
 
-        # X_val_char = X_val[feature_cols["char"]]
-        # X_val_word = X_val[feature_cols["word"]]
-        # X_val_par = X_val[feature_cols["par"]]
+        X_val_char = X_val[feature_cols["char"]]
+        X_val_word = X_val[feature_cols["word"]]
+        X_val_par = X_val[feature_cols["par"]]
         # X_val_regex = X_val[feature_cols["regex"]]
-        # X_val_rest = X_val[feature_cols["rest"]]
+        X_val_rest = X_val[feature_cols["rest"]]
 
         y_train_int = encoder.transform(y_train)
-        # y_val_int = encoder.transform(y_val)
+        y_val_int = encoder.transform(y_val)
         y_train_cat = tf.keras.utils.to_categorical(y_train_int)
-        # y_val_cat = tf.keras.utils.to_categorical(y_val_int)
+        y_val_cat = tf.keras.utils.to_categorical(y_val_int)
 
         callbacks = [EarlyStopping(monitor="val_loss", patience=5)]
 
@@ -84,41 +85,41 @@ class SherlockModel:
         )
 
         sample_start = 0
-        for (i, X) in enumerate(X_train):
-            sys.stderr.write(f'Batch {i + 1}...\n')
-            X_len = len(X)
-            X_train_char = X[feature_cols["char"]]
-            X_train_word = X[feature_cols["word"]]
-            X_train_par = X[feature_cols["par"]]
-            # X_train_regex = X[feature_cols["regex"]]
-            X_train_rest = X[feature_cols["rest"]]
+        #for (batch, (start_idx, end_idx)) in enumerate(windowed(range(0, len(X_train) + 1, 1000), 2)):
+        #    sys.stderr.write(f'Batch {batch + 1}...\n')
+        #    X = X_train[start_idx:end_idx]
+        X = X_train
+        X_train_char = X[feature_cols["char"]]
+        X_train_word = X[feature_cols["word"]]
+        X_train_par = X[feature_cols["par"]]
+        # X_train_regex = X[feature_cols["regex"]]
+        X_train_rest = X[feature_cols["rest"]]
 
-            model.fit(
-                x=[
-                    X_train_char.values,
-                    X_train_word.values,
-                    X_train_par.values,
-                    # X_train_regex.values,
-                    X_train_rest.values,
+        model.fit(
+            x=[
+                X_train_char.values,
+                X_train_word.values,
+                X_train_par.values,
+                # X_train_regex.values,
+                X_train_rest.values,
+            ],
+            y=y_train_cat,
+            #y=y_train_cat[start_idx:end_idx],
+            #validation_data=X_val,
+            validation_steps=5,
+            validation_data=(
+                [
+                    X_val_char.values,
+                    X_val_word.values,
+                    X_val_par.values,
+                    #X_val_regex.values,
+                    X_val_rest.values,
                 ],
-                y=y_train_cat[sample_start:sample_start + X_len],
-                validation_data=X_val,
-                validation_steps=5,
-                # validation_data=(
-                #     [
-                #         X_val_char.values,
-                #         X_val_word.values,
-                #         X_val_par.values,
-                #         X_val_regex.values,
-                #         X_val_rest.values,
-                #     ],
-                #     y_val_cat[:len(X_val)],
-                # ),
-                callbacks=callbacks,
-                epochs=100,
-            )
-
-            sample_start += X_len
+                y_val_cat,
+            ),
+            callbacks=callbacks,
+            epochs=100,
+        )
 
         self.model = model
 
