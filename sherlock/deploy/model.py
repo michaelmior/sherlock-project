@@ -16,6 +16,7 @@ from tensorflow.keras.layers import (
     concatenate,
 )
 from tensorflow.keras.models import Model, model_from_json
+from dvclive.keras import DVCLiveCallback
 
 from sherlock.deploy import helpers
 
@@ -26,7 +27,7 @@ class SherlockModel:
         self.do = 0.35
         self.lr = 0.0001
 
-        self.model_files_directory = os.path.join(os.path.dirname(__file__), '..', '..', 'model_files')
+        self.model_files_directory = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'model_files'))
 
     def fit(
         self, X_train: pd.DataFrame, y_train, X_val: pd.DataFrame, y_val, model_id: str
@@ -58,7 +59,7 @@ class SherlockModel:
         y_train_cat = tf.keras.utils.to_categorical(y_train_int)
         y_val_cat = tf.keras.utils.to_categorical(y_val_int)
 
-        callbacks = [EarlyStopping(monitor="val_loss", patience=5)]
+        callbacks = [EarlyStopping(monitor="val_loss", patience=5), DVCLiveCallback()]
 
         char_model_input, char_model = self._build_char_submodel(len(feature_cols["char"]))
         word_model_input, word_model = self._build_word_submodel(len(feature_cols["word"]))
@@ -232,6 +233,7 @@ class SherlockModel:
             self.model_files_directory, f"{model_id}_weights.h5"
         )
 
+        os.makedirs(self.model_files_directory, exist_ok=True)
         self.model.save_weights(weights_filename)
 
     def _build_char_submodel(self, char_shape):

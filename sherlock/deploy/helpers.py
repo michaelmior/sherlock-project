@@ -53,7 +53,9 @@ def _get_categorical_label_encodings(y_train, y_val, model_id: str) -> (list, li
     encoder = LabelEncoder()
     encoder.fit(y_train)
 
-    np.save(f"model_files/classes_{model_id}.npy", encoder.classes_)
+    classes_path = os.path.join(os.path.dirname(__file__), '..', '..', 'model_files')
+    os.makedirs(classes_path, exist_ok=True)
+    np.save(os.path.join(classes_path, f'classes_{model_id}.npy'), encoder.classes_)
 
     # Convert train labels
     y_train_int = encoder.transform(y_train)

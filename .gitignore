@@ -128,3 +128,5 @@ tmp
 wheel
 /sherlock/features/*.npy
 *.csv
+cuda_sdk_lib/
+/model_files

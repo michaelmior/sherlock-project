@@ -1,0 +1,20 @@
+stages:
+  train:
+    cmd: pipenv run python sherlock/scripts/train.py
+    deps:
+    - data/data/processed/train.parquet
+    - data/data/raw/train_labels.parquet
+    - data/data/processed/validation.parquet
+    - data/data/raw/val_labels.parquet
+    - data/data/processed/test.parquet
+    - data/data/raw/test_labels.parquet
+    - sherlock
+    - Pipfile.lock
+    outs:
+    - model_files/
+    metrics:
+    - dvclive/metrics.json:
+        cache: false
+    plots:
+    - dvclive/plots:
+        cache: false

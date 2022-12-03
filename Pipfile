@@ -30,6 +30,7 @@ hyperscan = "*"
 pyspark = "*"
 gdown = "*"
 line-profiler = "*"
+dvclive = "*"
 
 [dev-packages]
 gdown = "*"
