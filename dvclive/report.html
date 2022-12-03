@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="refresh" content="5">
+    <title>DVC Plot</title>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.18.2"></script>
+    
+    <style>
+        table {
+            border-spacing: 15px;
+        }
+    </style>
+</head>
+<body>
+    
+        <div id="metrics_json" style="text-align: center; padding: 10x">
+            <p>metrics_json</p>
+            <div style="display: flex;justify-content: center;">
+                <table>
+<thead>
+<tr><th>train                                                                    </th><th>eval                                                                    </th><th style="text-align: right;">  step</th></tr>
+</thead>
+<tbody>
+<tr><td>{&#x27;loss&#x27;: 0.48305991291999817, &#x27;categorical_accuracy&#x27;: 0.9059600830078125}</td><td>{&#x27;loss&#x27;: 0.7532254457473755, &#x27;categorical_accuracy&#x27;: 0.8822450041770935}</td><td style="text-align: right;">    18</td></tr>
+</tbody>
+</table>
+            </div>
+        </div>
+
+    <div id = "static_eval_categorical_accuracy">
+        <script type = "text/javascript">
+            var spec = {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "values": [
+    {
+        "eval/categorical_accuracy": "0.8453474044799805",
+        "rev": "workspace",
+        "step": "0"
+    },
+    {
+        "eval/categorical_accuracy": "0.8586124777793884",
+        "rev": "workspace",
+        "step": "1"
+    },
+    {
+        "eval/categorical_accuracy": "0.8636797070503235",
+        "rev": "workspace",
+        "step": "2"
+    },
+    {
+        "eval/categorical_accuracy": "0.8678150177001953",
+        "rev": "workspace",
+        "step": "3"
+    },
+    {
+        "eval/categorical_accuracy": "0.8685649633407593",
+        "rev": "workspace",
+        "step": "4"
+    },
+    {
+        "eval/categorical_accuracy": "0.8715936541557312",
+        "rev": "workspace",
+        "step": "5"
+    },
+    {
+        "eval/categorical_accuracy": "0.8750300407409668",
+        "rev": "workspace",
+        "step": "6"
+    },
+    {
+        "eval/categorical_accuracy": "0.876049280166626",
+        "rev": "workspace",
+        "step": "7"
+    },
+    {
+        "eval/categorical_accuracy": "0.8767118453979492",
+        "rev": "workspace",
+        "step": "8"
+    },
+    {
+        "eval/categorical_accuracy": "0.8770248889923096",
+        "rev": "workspace",
+        "step": "9"
+    },
+    {
+        "eval/categorical_accuracy": "0.8761512041091919",
+        "rev": "workspace",
+        "step": "10"
+    },
+    {
+        "eval/categorical_accuracy": "0.878706693649292",
+        "rev": "workspace",
+        "step": "11"
+    },
+    {
+        "eval/categorical_accuracy": "0.8797186613082886",
+        "rev": "workspace",
+        "step": "12"
+    },
+    {
+        "eval/categorical_accuracy": "0.8798861503601074",
+        "rev": "workspace",
+        "step": "13"
+    },
+    {
+        "eval/categorical_accuracy": "0.8802574276924133",
+        "rev": "workspace",
+        "step": "14"
+    },
+    {
+        "eval/categorical_accuracy": "0.8816552758216858",
+        "rev": "workspace",
+        "step": "15"
+    },
+    {
+        "eval/categorical_accuracy": "0.882587194442749",
+        "rev": "workspace",
+        "step": "16"
+    },
+    {
+        "eval/categorical_accuracy": "0.8822450041770935",
+        "rev": "workspace",
+        "step": "17"
+    }
+]
+    },
+    "title": "",
+    "width": 300,
+    "height": 300,
+    "layer": [
+        {
+            "encoding": {
+                "x": {
+                    "field": "step",
+                    "type": "quantitative",
+                    "title": "step"
+                },
+                "y": {
+                    "field": "eval/categorical_accuracy",
+                    "type": "quantitative",
+                    "title": "eval/categorical_accuracy",
+                    "scale": {
+                        "zero": false
+                    }
+                },
+                "color": {
+                    "field": "rev",
+                    "type": "nominal"
+                },
+                "tooltip": [
+                    {
+                        "field": "step",
+                        "type": "quantitative"
+                    },
+                    {
+                        "field": "eval/categorical_accuracy",
+                        "type": "quantitative"
+                    },
+                    {
+                        "field": "rev",
+                        "type": "nominal"
+                    }
+                ]
+            },
+            "layer": [
+                {
+                    "mark": "line"
+                },
+                {
+                    "transform": [
+                        {
+                            "filter": {
+                                "param": "hover",
+                                "empty": false
+                            }
+                        }
+                    ],
+                    "mark": "circle"
+                },
+                {
+                    "mark": "rule",
+                    "params": [
+                        {
+                            "name": "hover",
+                            "select": {
+                                "type": "point",
+                                "on": "mouseover",
+                                "nearest": true
+                            }
+                        }
+                    ],
+                    "encoding": {
+                        "color": {
+                            "condition": {
+                                "param": "hover",
+                                "empty": false,
+                                "value": "1"
+                            },
+                            "value": "transparent"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
+;
+            vegaEmbed('#static_eval_categorical_accuracy', spec);
+        </script>
+    </div>
+    
+
+    <div id = "static_eval_loss">
+        <script type = "text/javascript">
+            var spec = {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "values": [
+    {
+        "eval/loss": "1.0153547525405884",
+        "rev": "workspace",
+        "step": "0"
+    },
+    {
+        "eval/loss": "0.9810911417007446",
+        "rev": "workspace",
+        "step": "1"
+    },
+    {
+        "eval/loss": "0.8760532140731812",
+        "rev": "workspace",
+        "step": "2"
+    },
+    {
+        "eval/loss": "0.8117738366127014",
+        "rev": "workspace",
+        "step": "3"
+    },
+    {
+        "eval/loss": "0.8139276504516602",
+        "rev": "workspace",
+        "step": "4"
+    },
+    {
+        "eval/loss": "0.8310406804084778",
+        "rev": "workspace",
+        "step": "5"
+    },
+    {
+        "eval/loss": "0.7470966577529907",
+        "rev": "workspace",
+        "step": "6"
+    },
+    {
+        "eval/loss": "0.7434073090553284",
+        "rev": "workspace",
+        "step": "7"
+    },
+    {
+        "eval/loss": "0.7392308712005615",
+        "rev": "workspace",
+        "step": "8"
+    },
+    {
+        "eval/loss": "0.7392353415489197",
+        "rev": "workspace",
+        "step": "9"
+    },
+    {
+        "eval/loss": "0.7207071781158447",
+        "rev": "workspace",
+        "step": "10"
+    },
+    {
+        "eval/loss": "0.746373176574707",
+        "rev": "workspace",
+        "step": "11"
+    },
+    {
+        "eval/loss": "0.6998192667961121",
+        "rev": "workspace",
+        "step": "12"
+    },
+    {
+        "eval/loss": "0.707861065864563",
+        "rev": "workspace",
+        "step": "13"
+    },
+    {
+        "eval/loss": "0.7059645652770996",
+        "rev": "workspace",
+        "step": "14"
+    },
+    {
+        "eval/loss": "0.7054889798164368",
+        "rev": "workspace",
+        "step": "15"
+    },
+    {
+        "eval/loss": "0.7116696834564209",
+        "rev": "workspace",
+        "step": "16"
+    },
+    {
+        "eval/loss": "0.7532254457473755",
+        "rev": "workspace",
+        "step": "17"
+    }
+]
+    },
+    "title": "",
+    "width": 300,
+    "height": 300,
+    "layer": [
+        {
+            "encoding": {
+                "x": {
+                    "field": "step",
+                    "type": "quantitative",
+                    "title": "step"
+                },
+                "y": {
+                    "field": "eval/loss",
+                    "type": "quantitative",
+                    "title": "eval/loss",
+                    "scale": {
+                        "zero": false
+                    }
+                },
+                "color": {
+                    "field": "rev",
+                    "type": "nominal"
+                },
+                "tooltip": [
+                    {
+                        "field": "step",
+                        "type": "quantitative"
+                    },
+                    {
+                        "field": "eval/loss",
+                        "type": "quantitative"
+                    },
+                    {
+                        "field": "rev",
+                        "type": "nominal"
+                    }
+                ]
+            },
+            "layer": [
+                {
+                    "mark": "line"
+                },
+                {
+                    "transform": [
+                        {
+                            "filter": {
+                                "param": "hover",
+                                "empty": false
+                            }
+                        }
+                    ],
+                    "mark": "circle"
+                },
+                {
+                    "mark": "rule",
+                    "params": [
+                        {
+                            "name": "hover",
+                            "select": {
+                                "type": "point",
+                                "on": "mouseover",
+                                "nearest": true
+                            }
+                        }
+                    ],
+                    "encoding": {
+                        "color": {
+                            "condition": {
+                                "param": "hover",
+                                "empty": false,
+                                "value": "1"
+                            },
+                            "value": "transparent"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
+;
+            vegaEmbed('#static_eval_loss', spec);
+        </script>
+    </div>
+    
+
+    <div id = "static_train_loss">
+        <script type = "text/javascript">
+            var spec = {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "values": [
+    {
+        "rev": "workspace",
+        "step": "0",
+        "train/loss": "1.2590769529342651"
+    },
+    {
+        "rev": "workspace",
+        "step": "1",
+        "train/loss": "0.860752284526825"
+    },
+    {
+        "rev": "workspace",
+        "step": "2",
+        "train/loss": "0.7664601802825928"
+    },
+    {
+        "rev": "workspace",
+        "step": "3",
+        "train/loss": "0.7046076059341431"
+    },
+    {
+        "rev": "workspace",
+        "step": "4",
+        "train/loss": "0.6598910689353943"
+    },
+    {
+        "rev": "workspace",
+        "step": "5",
+        "train/loss": "0.6265601515769958"
+    },
+    {
+        "rev": "workspace",
+        "step": "6",
+        "train/loss": "0.5985449552536011"
+    },
+    {
+        "rev": "workspace",
+        "step": "7",
+        "train/loss": "0.5758460164070129"
+    },
+    {
+        "rev": "workspace",
+        "step": "8",
+        "train/loss": "0.5576912760734558"
+    },
+    {
+        "rev": "workspace",
+        "step": "9",
+        "train/loss": "0.5424455404281616"
+    },
+    {
+        "rev": "workspace",
+        "step": "10",
+        "train/loss": "0.5307599902153015"
+    },
+    {
+        "rev": "workspace",
+        "step": "11",
+        "train/loss": "0.519059419631958"
+    },
+    {
+        "rev": "workspace",
+        "step": "12",
+        "train/loss": "0.5116957426071167"
+    },
+    {
+        "rev": "workspace",
+        "step": "13",
+        "train/loss": "0.5030325651168823"
+    },
+    {
+        "rev": "workspace",
+        "step": "14",
+        "train/loss": "0.4973143935203552"
+    },
+    {
+        "rev": "workspace",
+        "step": "15",
+        "train/loss": "0.49250391125679016"
+    },
+    {
+        "rev": "workspace",
+        "step": "16",
+        "train/loss": "0.4867125451564789"
+    },
+    {
+        "rev": "workspace",
+        "step": "17",
+        "train/loss": "0.48305991291999817"
+    }
+]
+    },
+    "title": "",
+    "width": 300,
+    "height": 300,
+    "layer": [
+        {
+            "encoding": {
+                "x": {
+                    "field": "step",
+                    "type": "quantitative",
+                    "title": "step"
+                },
+                "y": {
+                    "field": "train/loss",
+                    "type": "quantitative",
+                    "title": "train/loss",
+                    "scale": {
+                        "zero": false
+                    }
+                },
+                "color": {
+                    "field": "rev",
+                    "type": "nominal"
+                },
+                "tooltip": [
+                    {
+                        "field": "step",
+                        "type": "quantitative"
+                    },
+                    {
+                        "field": "train/loss",
+                        "type": "quantitative"
+                    },
+                    {
+                        "field": "rev",
+                        "type": "nominal"
+                    }
+                ]
+            },
+            "layer": [
+                {
+                    "mark": "line"
+                },
+                {
+                    "transform": [
+                        {
+                            "filter": {
+                                "param": "hover",
+                                "empty": false
+                            }
+                        }
+                    ],
+                    "mark": "circle"
+                },
+                {
+                    "mark": "rule",
+                    "params": [
+                        {
+                            "name": "hover",
+                            "select": {
+                                "type": "point",
+                                "on": "mouseover",
+                                "nearest": true
+                            }
+                        }
+                    ],
+                    "encoding": {
+                        "color": {
+                            "condition": {
+                                "param": "hover",
+                                "empty": false,
+                                "value": "1"
+                            },
+                            "value": "transparent"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
+;
+            vegaEmbed('#static_train_loss', spec);
+        </script>
+    </div>
+    
+
+    <div id = "static_train_categorical_accuracy">
+        <script type = "text/javascript">
+            var spec = {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "values": [
+    {
+        "rev": "workspace",
+        "step": "0",
+        "train/categorical_accuracy": "0.7696834802627563"
+    },
+    {
+        "rev": "workspace",
+        "step": "1",
+        "train/categorical_accuracy": "0.853268563747406"
+    },
+    {
+        "rev": "workspace",
+        "step": "2",
+        "train/categorical_accuracy": "0.8687493801116943"
+    },
+    {
+        "rev": "workspace",
+        "step": "3",
+        "train/categorical_accuracy": "0.8768332004547119"
+    },
+    {
+        "rev": "workspace",
+        "step": "4",
+        "train/categorical_accuracy": "0.8828905820846558"
+    },
+    {
+        "rev": "workspace",
+        "step": "5",
+        "train/categorical_accuracy": "0.8864191770553589"
+    },
+    {
+        "rev": "workspace",
+        "step": "6",
+        "train/categorical_accuracy": "0.8900060653686523"
+    },
+    {
+        "rev": "workspace",
+        "step": "7",
+        "train/categorical_accuracy": "0.8927289247512817"
+    },
+    {
+        "rev": "workspace",
+        "step": "8",
+        "train/categorical_accuracy": "0.8950368762016296"
+    },
+    {
+        "rev": "workspace",
+        "step": "9",
+        "train/categorical_accuracy": "0.897087574005127"
+    },
+    {
+        "rev": "workspace",
+        "step": "10",
+        "train/categorical_accuracy": "0.8984732627868652"
+    },
+    {
+        "rev": "workspace",
+        "step": "11",
+        "train/categorical_accuracy": "0.9003055095672607"
+    },
+    {
+        "rev": "workspace",
+        "step": "12",
+        "train/categorical_accuracy": "0.9011913537979126"
+    },
+    {
+        "rev": "workspace",
+        "step": "13",
+        "train/categorical_accuracy": "0.9026086330413818"
+    },
+    {
+        "rev": "workspace",
+        "step": "14",
+        "train/categorical_accuracy": "0.903392493724823"
+    },
+    {
+        "rev": "workspace",
+        "step": "15",
+        "train/categorical_accuracy": "0.9040671586990356"
+    },
+    {
+        "rev": "workspace",
+        "step": "16",
+        "train/categorical_accuracy": "0.9051883220672607"
+    },
+    {
+        "rev": "workspace",
+        "step": "17",
+        "train/categorical_accuracy": "0.9059600830078125"
+    }
+]
+    },
+    "title": "",
+    "width": 300,
+    "height": 300,
+    "layer": [
+        {
+            "encoding": {
+                "x": {
+                    "field": "step",
+                    "type": "quantitative",
+                    "title": "step"
+                },
+                "y": {
+                    "field": "train/categorical_accuracy",
+                    "type": "quantitative",
+                    "title": "train/categorical_accuracy",
+                    "scale": {
+                        "zero": false
+                    }
+                },
+                "color": {
+                    "field": "rev",
+                    "type": "nominal"
+                },
+                "tooltip": [
+                    {
+                        "field": "step",
+                        "type": "quantitative"
+                    },
+                    {
+                        "field": "train/categorical_accuracy",
+                        "type": "quantitative"
+                    },
+                    {
+                        "field": "rev",
+                        "type": "nominal"
+                    }
+                ]
+            },
+            "layer": [
+                {
+                    "mark": "line"
+                },
+                {
+                    "transform": [
+                        {
+                            "filter": {
+                                "param": "hover",
+                                "empty": false
+                            }
+                        }
+                    ],
+                    "mark": "circle"
+                },
+                {
+                    "mark": "rule",
+                    "params": [
+                        {
+                            "name": "hover",
+                            "select": {
+                                "type": "point",
+                                "on": "mouseover",
+                                "nearest": true
+                            }
+                        }
+                    ],
+                    "encoding": {
+                        "color": {
+                            "condition": {
+                                "param": "hover",
+                                "empty": false,
+                                "value": "1"
+                            },
+                            "value": "transparent"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
+;
+            vegaEmbed('#static_train_categorical_accuracy', spec);
+        </script>
+    </div>
+    
+</body>
+</html>

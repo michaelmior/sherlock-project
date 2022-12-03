@@ -1,0 +1,42 @@
+schema: '2.0'
+stages:
+  train:
+    cmd: pipenv run python sherlock/scripts/train.py
+    deps:
+    - path: Pipfile.lock
+      md5: 8cc4efb5f5a28395458be5f211db37f1
+      size: 156513
+    - path: data/data/processed/test.parquet
+      md5: f8fa134f0cd0e03d27dc2290f6a9f7f3
+      size: 550776866
+    - path: data/data/processed/train.parquet
+      md5: d61a806ce3446933442b9db1e3dbe347
+      size: 1574760296
+    - path: data/data/processed/validation.parquet
+      md5: 6ecdb1851a3f98944ce84c1717bb409f
+      size: 551882138
+    - path: data/data/raw/test_labels.parquet
+      md5: 3c49eed09d82258bd4ace366b9139722
+      size: 1075735
+    - path: data/data/raw/train_labels.parquet
+      md5: 91e0b05d41f63d72a8fa2f17b71e2ca0
+      size: 2665143
+    - path: data/data/raw/val_labels.parquet
+      md5: d974f809f1f6d1bfe884497cf9644b2f
+      size: 1075411
+    - path: sherlock
+      md5: ee2f20453e82832927d2b67d865eaeec.dir
+      size: 2254668146
+      nfiles: 33
+    outs:
+    - path: dvclive/metrics.json
+      md5: 6cbd08ec9130959ab6aaf1b7518f1ee9
+      size: 236
+    - path: dvclive/plots
+      md5: 45b655f605290ac549273b9b5f867b0d.dir
+      size: 1630
+      nfiles: 4
+    - path: model_files/
+      md5: dfcb9c1f1115619b5a06d346750e6463.dir
+      size: 6237660
+      nfiles: 2
