@@ -9,3 +9,9 @@ early_stop:
 loss: categorical_crossentropy
 metrics:
   - categorical_accuracy
+submodels:
+  - char
+  - word
+  - par
+  # - regex
+  - rest

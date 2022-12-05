@@ -25,8 +25,8 @@ stages:
       md5: d974f809f1f6d1bfe884497cf9644b2f
       size: 1075411
     - path: sherlock
-      md5: 947827a88b2c9a4a0cd049dcaf9cc104.dir
-      size: 2254668462
+      md5: 7eecf5a4e1398b692c88255955aa0abc.dir
+      size: 2254669253
       nfiles: 33
     params:
       params.yaml:
@@ -40,16 +40,21 @@ stages:
         metrics:
         - categorical_accuracy
         penalty: 0.0001
+        submodels:
+        - char
+        - word
+        - par
+        - rest
         validation_steps: 5
     outs:
     - path: dvclive/metrics.json
-      md5: 38fa04accf4d8fd49960d0611ff771f7
+      md5: b4071c43f365605a9958850bd8e9820b
       size: 235
     - path: dvclive/plots
-      md5: 2dbf5768142f20c8de5e9709baeefd19.dir
-      size: 1893
+      md5: f987c20dd54b316fedd349d0757c64e3.dir
+      size: 1897
       nfiles: 4
     - path: model_files/
-      md5: e41f0db385b875c1a61d7da7ef5fbcf0.dir
+      md5: 4de9c361eb2a8ab928ea201886f72751.dir
       size: 6237660
       nfiles: 2
