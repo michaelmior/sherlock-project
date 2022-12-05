@@ -58,3 +58,37 @@ stages:
       md5: 4de9c361eb2a8ab928ea201886f72751.dir
       size: 6237660
       nfiles: 2
+  preprocess:
+    cmd: pipenv run python sherlock/scripts/preprocess.py
+    deps:
+    - path: data/data/raw/test_values.parquet
+      md5: 3bec4370ec05849aac49b5b32843ba9e
+      size: 92889349
+    - path: data/data/raw/train_values.parquet
+      md5: d3a60fb6905a95c59516e2d581e7c1fa
+      size: 264769689
+    - path: data/data/raw/val_values.parquet
+      md5: 10385153a11ebc350d5417ea066d6792
+      size: 95492484
+    - path: sherlock/features/par_vec_trained_400.pkl
+      md5: 02c1889619e759fad92732cdc147ff7a
+      size: 26531740
+    - path: sherlock/features/par_vec_trained_400.pkl.docvecs.vectors_docs.npy
+      md5: 643dbd19be6639a29887e1a0a783f8a8
+      size: 659294528
+    - path: sherlock/features/par_vec_trained_400.pkl.trainables.syn1neg.npy
+      md5: 12478c3ea87a9ec00428a8286b94dfc3
+      size: 595870528
+    - path: sherlock/features/par_vec_trained_400.pkl.wv.vectors.npy
+      md5: 8ceefa7b5c2c9a1c7b9a116fbefd9bdc
+      size: 595870528
+    outs:
+    - path: data/data/processed/test.parquet
+      md5: 41627902ab0ac3946142d7261fa08c01
+      size: 550777504
+    - path: data/data/processed/train.parquet
+      md5: 51f78d0176ae351d9df606daecabb3fb
+      size: 1574769596
+    - path: data/data/processed/validation.parquet
+      md5: 831ba9e5cc06736366aceb5a8cc2a918
+      size: 551860282

@@ -1,4 +1,18 @@
 stages:
+  preprocess:
+    cmd: pipenv run python sherlock/scripts/preprocess.py
+    deps:
+    - data/data/raw/test_values.parquet
+    - data/data/raw/train_values.parquet
+    - data/data/raw/val_values.parquet
+    - sherlock/features/par_vec_trained_400.pkl
+    - sherlock/features/par_vec_trained_400.pkl.docvecs.vectors_docs.npy
+    - sherlock/features/par_vec_trained_400.pkl.trainables.syn1neg.npy
+    - sherlock/features/par_vec_trained_400.pkl.wv.vectors.npy
+    outs:
+    - data/data/processed/train.parquet
+    - data/data/processed/test.parquet
+    - data/data/processed/validation.parquet
   train:
     cmd: pipenv run python sherlock/scripts/train.py
     params:
