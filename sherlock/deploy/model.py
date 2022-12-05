@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 import tensorflow as tf
 from more_itertools import windowed
+import yaml
 
 from sklearn.preprocessing import LabelEncoder
 from tensorflow.keras.callbacks import EarlyStopping
@@ -23,9 +24,7 @@ from sherlock.deploy import helpers
 
 class SherlockModel:
     def __init__(self):
-        self.lamb = 0.0001
-        self.do = 0.35
-        self.lr = 0.0001
+        self.params = yaml.safe_load(open('params.yaml'))
 
         self.model_files_directory = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'model_files'))
 
@@ -59,7 +58,7 @@ class SherlockModel:
         y_train_cat = tf.keras.utils.to_categorical(y_train_int)
         y_val_cat = tf.keras.utils.to_categorical(y_val_int)
 
-        callbacks = [EarlyStopping(monitor="val_loss", patience=5), DVCLiveCallback()]
+        callbacks = [EarlyStopping(**self.params['early_stop']), DVCLiveCallback()]
 
         char_model_input, char_model = self._build_char_submodel(len(feature_cols["char"]))
         word_model_input, word_model = self._build_word_submodel(len(feature_cols["word"]))
@@ -80,9 +79,9 @@ class SherlockModel:
         )
 
         model.compile(
-            optimizer=tf.keras.optimizers.Adam(learning_rate=self.lr),
-            loss="categorical_crossentropy",
-            metrics=["categorical_accuracy"],
+            optimizer=tf.keras.optimizers.Adam(learning_rate=self.params['learning_rate']),
+            loss=self.params['loss'],
+            metrics=self.params['metrics'],
         )
 
         sample_start = 0
@@ -107,7 +106,7 @@ class SherlockModel:
             y=y_train_cat,
             #y=y_train_cat[start_idx:end_idx],
             #validation_data=X_val,
-            validation_steps=5,
+            validation_steps=self.params['validation_steps'],
             validation_data=(
                 [
                     X_val_char.values,
@@ -119,7 +118,7 @@ class SherlockModel:
                 y_val_cat,
             ),
             callbacks=callbacks,
-            epochs=100,
+            epochs=self.params['epochs'],
         )
 
         self.model = model
@@ -216,7 +215,7 @@ class SherlockModel:
             model.load_weights(weights_filename)
 
         model.compile(
-            optimizer=tf.keras.optimizers.Adam(learning_rate=self.lr),
+            optimizer=tf.keras.optimizers.Adam(learning_rate=self.params['learning_rate']),
             loss="categorical_crossentropy",
             metrics=["categorical_accuracy"],
         )
@@ -244,13 +243,13 @@ class SherlockModel:
         char_model2 = Dense(
             n_weights,
             activation=tf.nn.relu,
-            kernel_regularizer=tf.keras.regularizers.l2(self.lamb),
+            kernel_regularizer=tf.keras.regularizers.l2(self.params['penalty']),
         )(char_model1)
-        char_model3 = Dropout(self.do)(char_model2)
+        char_model3 = Dropout(self.params['dropout_rate'])(char_model2)
         char_model4 = Dense(
             n_weights,
             activation=tf.nn.relu,
-            kernel_regularizer=tf.keras.regularizers.l2(self.lamb),
+            kernel_regularizer=tf.keras.regularizers.l2(self.params['penalty']),
         )(char_model3)
 
         return char_model_input, char_model4
@@ -263,13 +262,13 @@ class SherlockModel:
         word_model2 = Dense(
             n_weights,
             activation=tf.nn.relu,
-            kernel_regularizer=tf.keras.regularizers.l2(self.lamb),
+            kernel_regularizer=tf.keras.regularizers.l2(self.params['penalty']),
         )(word_model1)
-        word_model3 = Dropout(self.do)(word_model2)
+        word_model3 = Dropout(self.params['dropout_rate'])(word_model2)
         word_model4 = Dense(
             n_weights,
             activation=tf.nn.relu,
-            kernel_regularizer=tf.keras.regularizers.l2(self.lamb),
+            kernel_regularizer=tf.keras.regularizers.l2(self.params['penalty']),
         )(word_model3)
 
         return word_model_input, word_model4
@@ -282,13 +281,13 @@ class SherlockModel:
         par_model2 = Dense(
             n_weights,
             activation=tf.nn.relu,
-            kernel_regularizer=tf.keras.regularizers.l2(self.lamb),
+            kernel_regularizer=tf.keras.regularizers.l2(self.params['penalty']),
         )(par_model1)
-        par_model3 = Dropout(self.do)(par_model2)
+        par_model3 = Dropout(self.params['dropout_rate'])(par_model2)
         par_model4 = Dense(
             n_weights,
             activation=tf.nn.relu,
-            kernel_regularizer=tf.keras.regularizers.l2(self.lamb),
+            kernel_regularizer=tf.keras.regularizers.l2(self.params['penalty']),
         )(par_model3)
 
         return par_model_input, par_model4
@@ -301,13 +300,13 @@ class SherlockModel:
         regex_model2 = Dense(
             n_weights,
             activation=tf.nn.relu,
-            kernel_regularizer=tf.keras.regularizers.l2(self.lamb),
+            kernel_regularizer=tf.keras.regularizers.l2(self.params['penalty']),
         )(regex_model1)
-        regex_model3 = Dropout(self.do)(regex_model2)
+        regex_model3 = Dropout(self.params['dropout_rate'])(regex_model2)
         regex_model4 = Dense(
             n_weights,
             activation=tf.nn.relu,
-            kernel_regularizer=tf.keras.regularizers.l2(self.lamb),
+            kernel_regularizer=tf.keras.regularizers.l2(self.params['penalty']),
         )(regex_model3)
 
         return regex_model_input, regex_model4
@@ -327,18 +326,18 @@ class SherlockModel:
         merged_model3 = Dense(
             n_weights,
             activation=tf.nn.relu,
-            kernel_regularizer=tf.keras.regularizers.l2(self.lamb),
+            kernel_regularizer=tf.keras.regularizers.l2(self.params['penalty']),
         )(merged_model2)
-        merged_model4 = Dropout(self.do)(merged_model3)
+        merged_model4 = Dropout(self.params['dropout_rate'])(merged_model3)
         merged_model5 = Dense(
             n_weights,
             activation=tf.nn.relu,
-            kernel_regularizer=tf.keras.regularizers.l2(self.lamb),
+            kernel_regularizer=tf.keras.regularizers.l2(self.params['penalty']),
         )(merged_model4)
         merged_model_output = Dense(
             num_classes,
             activation=tf.nn.softmax,
-            kernel_regularizer=tf.keras.regularizers.l2(self.lamb),
+            kernel_regularizer=tf.keras.regularizers.l2(self.params['penalty']),
         )(merged_model5)
 
         return merged_model_output

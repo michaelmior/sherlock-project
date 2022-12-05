@@ -22,198 +22,14 @@
             <div style="display: flex;justify-content: center;">
                 <table>
 <thead>
-<tr><th>train                                                                    </th><th>eval                                                                    </th><th style="text-align: right;">  step</th></tr>
+<tr><th>train                                                                   </th><th>eval                                                                    </th><th style="text-align: right;">  step</th></tr>
 </thead>
 <tbody>
-<tr><td>{&#x27;loss&#x27;: 0.48305991291999817, &#x27;categorical_accuracy&#x27;: 0.9059600830078125}</td><td>{&#x27;loss&#x27;: 0.7532254457473755, &#x27;categorical_accuracy&#x27;: 0.8822450041770935}</td><td style="text-align: right;">    18</td></tr>
+<tr><td>{&#x27;loss&#x27;: 0.4740014374256134, &#x27;categorical_accuracy&#x27;: 0.9075690507888794}</td><td>{&#x27;loss&#x27;: 0.7333524823188782, &#x27;categorical_accuracy&#x27;: 0.8827619552612305}</td><td style="text-align: right;">    21</td></tr>
 </tbody>
 </table>
             </div>
         </div>
-
-    <div id = "static_eval_categorical_accuracy">
-        <script type = "text/javascript">
-            var spec = {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "data": {
-        "values": [
-    {
-        "eval/categorical_accuracy": "0.8453474044799805",
-        "rev": "workspace",
-        "step": "0"
-    },
-    {
-        "eval/categorical_accuracy": "0.8586124777793884",
-        "rev": "workspace",
-        "step": "1"
-    },
-    {
-        "eval/categorical_accuracy": "0.8636797070503235",
-        "rev": "workspace",
-        "step": "2"
-    },
-    {
-        "eval/categorical_accuracy": "0.8678150177001953",
-        "rev": "workspace",
-        "step": "3"
-    },
-    {
-        "eval/categorical_accuracy": "0.8685649633407593",
-        "rev": "workspace",
-        "step": "4"
-    },
-    {
-        "eval/categorical_accuracy": "0.8715936541557312",
-        "rev": "workspace",
-        "step": "5"
-    },
-    {
-        "eval/categorical_accuracy": "0.8750300407409668",
-        "rev": "workspace",
-        "step": "6"
-    },
-    {
-        "eval/categorical_accuracy": "0.876049280166626",
-        "rev": "workspace",
-        "step": "7"
-    },
-    {
-        "eval/categorical_accuracy": "0.8767118453979492",
-        "rev": "workspace",
-        "step": "8"
-    },
-    {
-        "eval/categorical_accuracy": "0.8770248889923096",
-        "rev": "workspace",
-        "step": "9"
-    },
-    {
-        "eval/categorical_accuracy": "0.8761512041091919",
-        "rev": "workspace",
-        "step": "10"
-    },
-    {
-        "eval/categorical_accuracy": "0.878706693649292",
-        "rev": "workspace",
-        "step": "11"
-    },
-    {
-        "eval/categorical_accuracy": "0.8797186613082886",
-        "rev": "workspace",
-        "step": "12"
-    },
-    {
-        "eval/categorical_accuracy": "0.8798861503601074",
-        "rev": "workspace",
-        "step": "13"
-    },
-    {
-        "eval/categorical_accuracy": "0.8802574276924133",
-        "rev": "workspace",
-        "step": "14"
-    },
-    {
-        "eval/categorical_accuracy": "0.8816552758216858",
-        "rev": "workspace",
-        "step": "15"
-    },
-    {
-        "eval/categorical_accuracy": "0.882587194442749",
-        "rev": "workspace",
-        "step": "16"
-    },
-    {
-        "eval/categorical_accuracy": "0.8822450041770935",
-        "rev": "workspace",
-        "step": "17"
-    }
-]
-    },
-    "title": "",
-    "width": 300,
-    "height": 300,
-    "layer": [
-        {
-            "encoding": {
-                "x": {
-                    "field": "step",
-                    "type": "quantitative",
-                    "title": "step"
-                },
-                "y": {
-                    "field": "eval/categorical_accuracy",
-                    "type": "quantitative",
-                    "title": "eval/categorical_accuracy",
-                    "scale": {
-                        "zero": false
-                    }
-                },
-                "color": {
-                    "field": "rev",
-                    "type": "nominal"
-                },
-                "tooltip": [
-                    {
-                        "field": "step",
-                        "type": "quantitative"
-                    },
-                    {
-                        "field": "eval/categorical_accuracy",
-                        "type": "quantitative"
-                    },
-                    {
-                        "field": "rev",
-                        "type": "nominal"
-                    }
-                ]
-            },
-            "layer": [
-                {
-                    "mark": "line"
-                },
-                {
-                    "transform": [
-                        {
-                            "filter": {
-                                "param": "hover",
-                                "empty": false
-                            }
-                        }
-                    ],
-                    "mark": "circle"
-                },
-                {
-                    "mark": "rule",
-                    "params": [
-                        {
-                            "name": "hover",
-                            "select": {
-                                "type": "point",
-                                "on": "mouseover",
-                                "nearest": true
-                            }
-                        }
-                    ],
-                    "encoding": {
-                        "color": {
-                            "condition": {
-                                "param": "hover",
-                                "empty": false,
-                                "value": "1"
-                            },
-                            "value": "transparent"
-                        }
-                    }
-                }
-            ]
-        }
-    ]
-}
-;
-            vegaEmbed('#static_eval_categorical_accuracy', spec);
-        </script>
-    </div>
-    
 
     <div id = "static_eval_loss">
         <script type = "text/javascript">
@@ -222,94 +38,109 @@
     "data": {
         "values": [
     {
-        "eval/loss": "1.0153547525405884",
+        "eval/loss": "0.9967036247253418",
         "rev": "workspace",
         "step": "0"
     },
     {
-        "eval/loss": "0.9810911417007446",
+        "eval/loss": "0.9746624827384949",
         "rev": "workspace",
         "step": "1"
     },
     {
-        "eval/loss": "0.8760532140731812",
+        "eval/loss": "0.8589501976966858",
         "rev": "workspace",
         "step": "2"
     },
     {
-        "eval/loss": "0.8117738366127014",
+        "eval/loss": "0.8265308737754822",
         "rev": "workspace",
         "step": "3"
     },
     {
-        "eval/loss": "0.8139276504516602",
+        "eval/loss": "0.7857906222343445",
         "rev": "workspace",
         "step": "4"
     },
     {
-        "eval/loss": "0.8310406804084778",
+        "eval/loss": "0.8084979057312012",
         "rev": "workspace",
         "step": "5"
     },
     {
-        "eval/loss": "0.7470966577529907",
+        "eval/loss": "0.7532148957252502",
         "rev": "workspace",
         "step": "6"
     },
     {
-        "eval/loss": "0.7434073090553284",
+        "eval/loss": "0.7632729411125183",
         "rev": "workspace",
         "step": "7"
     },
     {
-        "eval/loss": "0.7392308712005615",
+        "eval/loss": "0.7223584055900574",
         "rev": "workspace",
         "step": "8"
     },
     {
-        "eval/loss": "0.7392353415489197",
+        "eval/loss": "0.7680490016937256",
         "rev": "workspace",
         "step": "9"
     },
     {
-        "eval/loss": "0.7207071781158447",
+        "eval/loss": "0.7625732421875",
         "rev": "workspace",
         "step": "10"
     },
     {
-        "eval/loss": "0.746373176574707",
+        "eval/loss": "0.7175318598747253",
         "rev": "workspace",
         "step": "11"
     },
     {
-        "eval/loss": "0.6998192667961121",
+        "eval/loss": "0.7963084578514099",
         "rev": "workspace",
         "step": "12"
     },
     {
-        "eval/loss": "0.707861065864563",
+        "eval/loss": "0.7149057984352112",
         "rev": "workspace",
         "step": "13"
     },
     {
-        "eval/loss": "0.7059645652770996",
+        "eval/loss": "0.7540293335914612",
         "rev": "workspace",
         "step": "14"
     },
     {
-        "eval/loss": "0.7054889798164368",
+        "eval/loss": "0.6961996555328369",
         "rev": "workspace",
         "step": "15"
     },
     {
-        "eval/loss": "0.7116696834564209",
+        "eval/loss": "0.7406027913093567",
         "rev": "workspace",
         "step": "16"
     },
     {
-        "eval/loss": "0.7532254457473755",
+        "eval/loss": "0.723518431186676",
         "rev": "workspace",
         "step": "17"
+    },
+    {
+        "eval/loss": "0.7561350464820862",
+        "rev": "workspace",
+        "step": "18"
+    },
+    {
+        "eval/loss": "0.7135512828826904",
+        "rev": "workspace",
+        "step": "19"
+    },
+    {
+        "eval/loss": "0.7333524823188782",
+        "rev": "workspace",
+        "step": "20"
     }
 ]
     },
@@ -399,6 +230,205 @@
     </div>
     
 
+    <div id = "static_eval_categorical_accuracy">
+        <script type = "text/javascript">
+            var spec = {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "values": [
+    {
+        "eval/categorical_accuracy": "0.8448668718338013",
+        "rev": "workspace",
+        "step": "0"
+    },
+    {
+        "eval/categorical_accuracy": "0.8543096780776978",
+        "rev": "workspace",
+        "step": "1"
+    },
+    {
+        "eval/categorical_accuracy": "0.8624492883682251",
+        "rev": "workspace",
+        "step": "2"
+    },
+    {
+        "eval/categorical_accuracy": "0.8680407404899597",
+        "rev": "workspace",
+        "step": "3"
+    },
+    {
+        "eval/categorical_accuracy": "0.8702321648597717",
+        "rev": "workspace",
+        "step": "4"
+    },
+    {
+        "eval/categorical_accuracy": "0.8715135455131531",
+        "rev": "workspace",
+        "step": "5"
+    },
+    {
+        "eval/categorical_accuracy": "0.8727730512619019",
+        "rev": "workspace",
+        "step": "6"
+    },
+    {
+        "eval/categorical_accuracy": "0.8760566115379333",
+        "rev": "workspace",
+        "step": "7"
+    },
+    {
+        "eval/categorical_accuracy": "0.877469003200531",
+        "rev": "workspace",
+        "step": "8"
+    },
+    {
+        "eval/categorical_accuracy": "0.8777820467948914",
+        "rev": "workspace",
+        "step": "9"
+    },
+    {
+        "eval/categorical_accuracy": "0.8777238130569458",
+        "rev": "workspace",
+        "step": "10"
+    },
+    {
+        "eval/categorical_accuracy": "0.879492998123169",
+        "rev": "workspace",
+        "step": "11"
+    },
+    {
+        "eval/categorical_accuracy": "0.8782261610031128",
+        "rev": "workspace",
+        "step": "12"
+    },
+    {
+        "eval/categorical_accuracy": "0.8807306885719299",
+        "rev": "workspace",
+        "step": "13"
+    },
+    {
+        "eval/categorical_accuracy": "0.8798642754554749",
+        "rev": "workspace",
+        "step": "14"
+    },
+    {
+        "eval/categorical_accuracy": "0.881116509437561",
+        "rev": "workspace",
+        "step": "15"
+    },
+    {
+        "eval/categorical_accuracy": "0.882354199886322",
+        "rev": "workspace",
+        "step": "16"
+    },
+    {
+        "eval/categorical_accuracy": "0.8818008899688721",
+        "rev": "workspace",
+        "step": "17"
+    },
+    {
+        "eval/categorical_accuracy": "0.8836210370063782",
+        "rev": "workspace",
+        "step": "18"
+    },
+    {
+        "eval/categorical_accuracy": "0.8823251128196716",
+        "rev": "workspace",
+        "step": "19"
+    },
+    {
+        "eval/categorical_accuracy": "0.8827619552612305",
+        "rev": "workspace",
+        "step": "20"
+    }
+]
+    },
+    "title": "",
+    "width": 300,
+    "height": 300,
+    "layer": [
+        {
+            "encoding": {
+                "x": {
+                    "field": "step",
+                    "type": "quantitative",
+                    "title": "step"
+                },
+                "y": {
+                    "field": "eval/categorical_accuracy",
+                    "type": "quantitative",
+                    "title": "eval/categorical_accuracy",
+                    "scale": {
+                        "zero": false
+                    }
+                },
+                "color": {
+                    "field": "rev",
+                    "type": "nominal"
+                },
+                "tooltip": [
+                    {
+                        "field": "step",
+                        "type": "quantitative"
+                    },
+                    {
+                        "field": "eval/categorical_accuracy",
+                        "type": "quantitative"
+                    },
+                    {
+                        "field": "rev",
+                        "type": "nominal"
+                    }
+                ]
+            },
+            "layer": [
+                {
+                    "mark": "line"
+                },
+                {
+                    "transform": [
+                        {
+                            "filter": {
+                                "param": "hover",
+                                "empty": false
+                            }
+                        }
+                    ],
+                    "mark": "circle"
+                },
+                {
+                    "mark": "rule",
+                    "params": [
+                        {
+                            "name": "hover",
+                            "select": {
+                                "type": "point",
+                                "on": "mouseover",
+                                "nearest": true
+                            }
+                        }
+                    ],
+                    "encoding": {
+                        "color": {
+                            "condition": {
+                                "param": "hover",
+                                "empty": false,
+                                "value": "1"
+                            },
+                            "value": "transparent"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
+;
+            vegaEmbed('#static_eval_categorical_accuracy', spec);
+        </script>
+    </div>
+    
+
     <div id = "static_train_loss">
         <script type = "text/javascript">
             var spec = {
@@ -408,92 +438,107 @@
     {
         "rev": "workspace",
         "step": "0",
-        "train/loss": "1.2590769529342651"
+        "train/loss": "1.2497490644454956"
     },
     {
         "rev": "workspace",
         "step": "1",
-        "train/loss": "0.860752284526825"
+        "train/loss": "0.8592711687088013"
     },
     {
         "rev": "workspace",
         "step": "2",
-        "train/loss": "0.7664601802825928"
+        "train/loss": "0.7657382488250732"
     },
     {
         "rev": "workspace",
         "step": "3",
-        "train/loss": "0.7046076059341431"
+        "train/loss": "0.7040507793426514"
     },
     {
         "rev": "workspace",
         "step": "4",
-        "train/loss": "0.6598910689353943"
+        "train/loss": "0.6601406931877136"
     },
     {
         "rev": "workspace",
         "step": "5",
-        "train/loss": "0.6265601515769958"
+        "train/loss": "0.6253980994224548"
     },
     {
         "rev": "workspace",
         "step": "6",
-        "train/loss": "0.5985449552536011"
+        "train/loss": "0.5985837578773499"
     },
     {
         "rev": "workspace",
         "step": "7",
-        "train/loss": "0.5758460164070129"
+        "train/loss": "0.5771957635879517"
     },
     {
         "rev": "workspace",
         "step": "8",
-        "train/loss": "0.5576912760734558"
+        "train/loss": "0.5589247941970825"
     },
     {
         "rev": "workspace",
         "step": "9",
-        "train/loss": "0.5424455404281616"
+        "train/loss": "0.5430783033370972"
     },
     {
         "rev": "workspace",
         "step": "10",
-        "train/loss": "0.5307599902153015"
+        "train/loss": "0.5306141376495361"
     },
     {
         "rev": "workspace",
         "step": "11",
-        "train/loss": "0.519059419631958"
+        "train/loss": "0.5211358666419983"
     },
     {
         "rev": "workspace",
         "step": "12",
-        "train/loss": "0.5116957426071167"
+        "train/loss": "0.5112159848213196"
     },
     {
         "rev": "workspace",
         "step": "13",
-        "train/loss": "0.5030325651168823"
+        "train/loss": "0.5047450065612793"
     },
     {
         "rev": "workspace",
         "step": "14",
-        "train/loss": "0.4973143935203552"
+        "train/loss": "0.4986807405948639"
     },
     {
         "rev": "workspace",
         "step": "15",
-        "train/loss": "0.49250391125679016"
+        "train/loss": "0.49259379506111145"
     },
     {
         "rev": "workspace",
         "step": "16",
-        "train/loss": "0.4867125451564789"
+        "train/loss": "0.4888000190258026"
     },
     {
         "rev": "workspace",
         "step": "17",
-        "train/loss": "0.48305991291999817"
+        "train/loss": "0.485160768032074"
+    },
+    {
+        "rev": "workspace",
+        "step": "18",
+        "train/loss": "0.48055389523506165"
+    },
+    {
+        "rev": "workspace",
+        "step": "19",
+        "train/loss": "0.4766370952129364"
+    },
+    {
+        "rev": "workspace",
+        "step": "20",
+        "train/loss": "0.4740014374256134"
     }
 ]
     },
@@ -592,92 +637,107 @@
     {
         "rev": "workspace",
         "step": "0",
-        "train/categorical_accuracy": "0.7696834802627563"
+        "train/categorical_accuracy": "0.7716540694236755"
     },
     {
         "rev": "workspace",
         "step": "1",
-        "train/categorical_accuracy": "0.853268563747406"
+        "train/categorical_accuracy": "0.8531739115715027"
     },
     {
         "rev": "workspace",
         "step": "2",
-        "train/categorical_accuracy": "0.8687493801116943"
+        "train/categorical_accuracy": "0.8681038618087769"
     },
     {
         "rev": "workspace",
         "step": "3",
-        "train/categorical_accuracy": "0.8768332004547119"
+        "train/categorical_accuracy": "0.8773015737533569"
     },
     {
         "rev": "workspace",
         "step": "4",
-        "train/categorical_accuracy": "0.8828905820846558"
+        "train/categorical_accuracy": "0.882402777671814"
     },
     {
         "rev": "workspace",
         "step": "5",
-        "train/categorical_accuracy": "0.8864191770553589"
+        "train/categorical_accuracy": "0.8870720267295837"
     },
     {
         "rev": "workspace",
         "step": "6",
-        "train/categorical_accuracy": "0.8900060653686523"
+        "train/categorical_accuracy": "0.8898919820785522"
     },
     {
         "rev": "workspace",
         "step": "7",
-        "train/categorical_accuracy": "0.8927289247512817"
+        "train/categorical_accuracy": "0.8929328322410583"
     },
     {
         "rev": "workspace",
         "step": "8",
-        "train/categorical_accuracy": "0.8950368762016296"
+        "train/categorical_accuracy": "0.8944981098175049"
     },
     {
         "rev": "workspace",
         "step": "9",
-        "train/categorical_accuracy": "0.897087574005127"
+        "train/categorical_accuracy": "0.8969370722770691"
     },
     {
         "rev": "workspace",
         "step": "10",
-        "train/categorical_accuracy": "0.8984732627868652"
+        "train/categorical_accuracy": "0.8983009457588196"
     },
     {
         "rev": "workspace",
         "step": "11",
-        "train/categorical_accuracy": "0.9003055095672607"
+        "train/categorical_accuracy": "0.8998371362686157"
     },
     {
         "rev": "workspace",
         "step": "12",
-        "train/categorical_accuracy": "0.9011913537979126"
+        "train/categorical_accuracy": "0.9012471437454224"
     },
     {
         "rev": "workspace",
         "step": "13",
-        "train/categorical_accuracy": "0.9026086330413818"
+        "train/categorical_accuracy": "0.9023392200469971"
     },
     {
         "rev": "workspace",
         "step": "14",
-        "train/categorical_accuracy": "0.903392493724823"
+        "train/categorical_accuracy": "0.9034215807914734"
     },
     {
         "rev": "workspace",
         "step": "15",
-        "train/categorical_accuracy": "0.9040671586990356"
+        "train/categorical_accuracy": "0.903826892375946"
     },
     {
         "rev": "workspace",
         "step": "16",
-        "train/categorical_accuracy": "0.9051883220672607"
+        "train/categorical_accuracy": "0.9043437838554382"
     },
     {
         "rev": "workspace",
         "step": "17",
+        "train/categorical_accuracy": "0.9052878618240356"
+    },
+    {
+        "rev": "workspace",
+        "step": "18",
         "train/categorical_accuracy": "0.9059600830078125"
+    },
+    {
+        "rev": "workspace",
+        "step": "19",
+        "train/categorical_accuracy": "0.9067584872245789"
+    },
+    {
+        "rev": "workspace",
+        "step": "20",
+        "train/categorical_accuracy": "0.9075690507888794"
     }
 ]
     },

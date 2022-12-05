@@ -1,6 +1,8 @@
 stages:
   train:
     cmd: pipenv run python sherlock/scripts/train.py
+    params:
+      - params.yaml:
     deps:
     - data/data/processed/train.parquet
     - data/data/raw/train_labels.parquet

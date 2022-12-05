@@ -4,8 +4,8 @@ stages:
     cmd: pipenv run python sherlock/scripts/train.py
     deps:
     - path: Pipfile.lock
-      md5: 8cc4efb5f5a28395458be5f211db37f1
-      size: 156513
+      md5: 424fdb295f5099b7e1c300f9c75997bb
+      size: 156492
     - path: data/data/processed/test.parquet
       md5: f8fa134f0cd0e03d27dc2290f6a9f7f3
       size: 550776866
@@ -25,18 +25,31 @@ stages:
       md5: d974f809f1f6d1bfe884497cf9644b2f
       size: 1075411
     - path: sherlock
-      md5: ee2f20453e82832927d2b67d865eaeec.dir
-      size: 2254668146
+      md5: 947827a88b2c9a4a0cd049dcaf9cc104.dir
+      size: 2254668462
       nfiles: 33
+    params:
+      params.yaml:
+        dropout_rate: 0.35
+        early_stop:
+          patience: 5
+          monitor: val_loss
+        epochs: 100
+        learning_rate: 0.0001
+        loss: categorical_crossentropy
+        metrics:
+        - categorical_accuracy
+        penalty: 0.0001
+        validation_steps: 5
     outs:
     - path: dvclive/metrics.json
-      md5: 6cbd08ec9130959ab6aaf1b7518f1ee9
-      size: 236
+      md5: 38fa04accf4d8fd49960d0611ff771f7
+      size: 235
     - path: dvclive/plots
-      md5: 45b655f605290ac549273b9b5f867b0d.dir
-      size: 1630
+      md5: 2dbf5768142f20c8de5e9709baeefd19.dir
+      size: 1893
       nfiles: 4
     - path: model_files/
-      md5: dfcb9c1f1115619b5a06d346750e6463.dir
+      md5: e41f0db385b875c1a61d7da7ef5fbcf0.dir
       size: 6237660
       nfiles: 2
