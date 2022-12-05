@@ -22,213 +22,14 @@
             <div style="display: flex;justify-content: center;">
                 <table>
 <thead>
-<tr><th>train                                                                   </th><th>eval                                                                    </th><th style="text-align: right;">  step</th></tr>
+<tr><th>train                                                                    </th><th>eval                                                                    </th><th style="text-align: right;">  step</th></tr>
 </thead>
 <tbody>
-<tr><td>{&#x27;loss&#x27;: 0.4745083451271057, &#x27;categorical_accuracy&#x27;: 0.9069380760192871}</td><td>{&#x27;loss&#x27;: 0.7054416537284851, &#x27;categorical_accuracy&#x27;: 0.8828420042991638}</td><td style="text-align: right;">    21</td></tr>
+<tr><td>{&#x27;loss&#x27;: 0.47374260425567627, &#x27;categorical_accuracy&#x27;: 0.9077510833740234}</td><td>{&#x27;loss&#x27;: 0.6874526143074036, &#x27;categorical_accuracy&#x27;: 0.8839049935340881}</td><td style="text-align: right;">    21</td></tr>
 </tbody>
 </table>
             </div>
         </div>
-
-    <div id = "static_eval_loss">
-        <script type = "text/javascript">
-            var spec = {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "data": {
-        "values": [
-    {
-        "eval/loss": "1.0170903205871582",
-        "rev": "workspace",
-        "step": "0"
-    },
-    {
-        "eval/loss": "0.950709342956543",
-        "rev": "workspace",
-        "step": "1"
-    },
-    {
-        "eval/loss": "0.8607245683670044",
-        "rev": "workspace",
-        "step": "2"
-    },
-    {
-        "eval/loss": "0.8381252288818359",
-        "rev": "workspace",
-        "step": "3"
-    },
-    {
-        "eval/loss": "0.8092125058174133",
-        "rev": "workspace",
-        "step": "4"
-    },
-    {
-        "eval/loss": "0.7983224391937256",
-        "rev": "workspace",
-        "step": "5"
-    },
-    {
-        "eval/loss": "0.758423924446106",
-        "rev": "workspace",
-        "step": "6"
-    },
-    {
-        "eval/loss": "0.7432140111923218",
-        "rev": "workspace",
-        "step": "7"
-    },
-    {
-        "eval/loss": "0.738295316696167",
-        "rev": "workspace",
-        "step": "8"
-    },
-    {
-        "eval/loss": "0.7608427405357361",
-        "rev": "workspace",
-        "step": "9"
-    },
-    {
-        "eval/loss": "0.7526721358299255",
-        "rev": "workspace",
-        "step": "10"
-    },
-    {
-        "eval/loss": "0.728434145450592",
-        "rev": "workspace",
-        "step": "11"
-    },
-    {
-        "eval/loss": "0.7884796857833862",
-        "rev": "workspace",
-        "step": "12"
-    },
-    {
-        "eval/loss": "0.7362794280052185",
-        "rev": "workspace",
-        "step": "13"
-    },
-    {
-        "eval/loss": "0.7330099940299988",
-        "rev": "workspace",
-        "step": "14"
-    },
-    {
-        "eval/loss": "0.7018921375274658",
-        "rev": "workspace",
-        "step": "15"
-    },
-    {
-        "eval/loss": "0.7221500277519226",
-        "rev": "workspace",
-        "step": "16"
-    },
-    {
-        "eval/loss": "0.7418860793113708",
-        "rev": "workspace",
-        "step": "17"
-    },
-    {
-        "eval/loss": "0.7116960883140564",
-        "rev": "workspace",
-        "step": "18"
-    },
-    {
-        "eval/loss": "0.754721999168396",
-        "rev": "workspace",
-        "step": "19"
-    },
-    {
-        "eval/loss": "0.7054416537284851",
-        "rev": "workspace",
-        "step": "20"
-    }
-]
-    },
-    "title": "",
-    "width": 300,
-    "height": 300,
-    "layer": [
-        {
-            "encoding": {
-                "x": {
-                    "field": "step",
-                    "type": "quantitative",
-                    "title": "step"
-                },
-                "y": {
-                    "field": "eval/loss",
-                    "type": "quantitative",
-                    "title": "eval/loss",
-                    "scale": {
-                        "zero": false
-                    }
-                },
-                "color": {
-                    "field": "rev",
-                    "type": "nominal"
-                },
-                "tooltip": [
-                    {
-                        "field": "step",
-                        "type": "quantitative"
-                    },
-                    {
-                        "field": "eval/loss",
-                        "type": "quantitative"
-                    },
-                    {
-                        "field": "rev",
-                        "type": "nominal"
-                    }
-                ]
-            },
-            "layer": [
-                {
-                    "mark": "line"
-                },
-                {
-                    "transform": [
-                        {
-                            "filter": {
-                                "param": "hover",
-                                "empty": false
-                            }
-                        }
-                    ],
-                    "mark": "circle"
-                },
-                {
-                    "mark": "rule",
-                    "params": [
-                        {
-                            "name": "hover",
-                            "select": {
-                                "type": "point",
-                                "on": "mouseover",
-                                "nearest": true
-                            }
-                        }
-                    ],
-                    "encoding": {
-                        "color": {
-                            "condition": {
-                                "param": "hover",
-                                "empty": false,
-                                "value": "1"
-                            },
-                            "value": "transparent"
-                        }
-                    }
-                }
-            ]
-        }
-    ]
-}
-;
-            vegaEmbed('#static_eval_loss', spec);
-        </script>
-    </div>
-    
 
     <div id = "static_eval_categorical_accuracy">
         <script type = "text/javascript">
@@ -237,107 +38,107 @@
     "data": {
         "values": [
     {
-        "eval/categorical_accuracy": "0.8456313014030457",
+        "eval/categorical_accuracy": "0.8459516763687134",
         "rev": "workspace",
         "step": "0"
     },
     {
-        "eval/categorical_accuracy": "0.8560279011726379",
+        "eval/categorical_accuracy": "0.854688286781311",
         "rev": "workspace",
         "step": "1"
     },
     {
-        "eval/categorical_accuracy": "0.8627332448959351",
+        "eval/categorical_accuracy": "0.8630099296569824",
         "rev": "workspace",
         "step": "2"
     },
     {
-        "eval/categorical_accuracy": "0.8667375445365906",
+        "eval/categorical_accuracy": "0.8657255172729492",
         "rev": "workspace",
         "step": "3"
     },
     {
-        "eval/categorical_accuracy": "0.8690381646156311",
+        "eval/categorical_accuracy": "0.8694531321525574",
         "rev": "workspace",
         "step": "4"
     },
     {
-        "eval/categorical_accuracy": "0.8700792789459229",
+        "eval/categorical_accuracy": "0.8715208172798157",
         "rev": "workspace",
         "step": "5"
     },
     {
-        "eval/categorical_accuracy": "0.8750081658363342",
+        "eval/categorical_accuracy": "0.8743311166763306",
         "rev": "workspace",
         "step": "6"
     },
     {
-        "eval/categorical_accuracy": "0.8754668831825256",
+        "eval/categorical_accuracy": "0.8751465082168579",
         "rev": "workspace",
         "step": "7"
     },
     {
-        "eval/categorical_accuracy": "0.8767482042312622",
+        "eval/categorical_accuracy": "0.8765516877174377",
         "rev": "workspace",
         "step": "8"
     },
     {
-        "eval/categorical_accuracy": "0.8771413564682007",
+        "eval/categorical_accuracy": "0.8774617314338684",
         "rev": "workspace",
         "step": "9"
     },
     {
-        "eval/categorical_accuracy": "0.8782407641410828",
+        "eval/categorical_accuracy": "0.8787868022918701",
         "rev": "workspace",
         "step": "10"
     },
     {
-        "eval/categorical_accuracy": "0.8782698512077332",
+        "eval/categorical_accuracy": "0.8791872262954712",
         "rev": "workspace",
         "step": "11"
     },
     {
-        "eval/categorical_accuracy": "0.8792891502380371",
+        "eval/categorical_accuracy": "0.879391074180603",
         "rev": "workspace",
         "step": "12"
     },
     {
-        "eval/categorical_accuracy": "0.8809563517570496",
+        "eval/categorical_accuracy": "0.8799589276313782",
         "rev": "workspace",
         "step": "13"
     },
     {
-        "eval/categorical_accuracy": "0.8793182373046875",
+        "eval/categorical_accuracy": "0.8786338567733765",
         "rev": "workspace",
         "step": "14"
     },
     {
-        "eval/categorical_accuracy": "0.8816916942596436",
+        "eval/categorical_accuracy": "0.880949079990387",
         "rev": "workspace",
         "step": "15"
     },
     {
-        "eval/categorical_accuracy": "0.8816115856170654",
+        "eval/categorical_accuracy": "0.8804249167442322",
         "rev": "workspace",
         "step": "16"
     },
     {
-        "eval/categorical_accuracy": "0.8818445801734924",
+        "eval/categorical_accuracy": "0.8815242648124695",
         "rev": "workspace",
         "step": "17"
     },
     {
-        "eval/categorical_accuracy": "0.8807525038719177",
+        "eval/categorical_accuracy": "0.8818955421447754",
         "rev": "workspace",
         "step": "18"
     },
     {
-        "eval/categorical_accuracy": "0.8828566074371338",
+        "eval/categorical_accuracy": "0.8826236128807068",
         "rev": "workspace",
         "step": "19"
     },
     {
-        "eval/categorical_accuracy": "0.8828420042991638",
+        "eval/categorical_accuracy": "0.8839049935340881",
         "rev": "workspace",
         "step": "20"
     }
@@ -429,116 +230,116 @@
     </div>
     
 
-    <div id = "static_train_categorical_accuracy">
+    <div id = "static_eval_loss">
         <script type = "text/javascript">
             var spec = {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "data": {
         "values": [
     {
+        "eval/loss": "1.077176809310913",
         "rev": "workspace",
-        "step": "0",
-        "train/categorical_accuracy": "0.7707488536834717"
+        "step": "0"
     },
     {
+        "eval/loss": "0.9113820791244507",
         "rev": "workspace",
-        "step": "1",
-        "train/categorical_accuracy": "0.8524143099784851"
+        "step": "1"
     },
     {
+        "eval/loss": "0.8647884726524353",
         "rev": "workspace",
-        "step": "2",
-        "train/categorical_accuracy": "0.8683077096939087"
+        "step": "2"
     },
     {
+        "eval/loss": "0.8644779324531555",
         "rev": "workspace",
-        "step": "3",
-        "train/categorical_accuracy": "0.8766924142837524"
+        "step": "3"
     },
     {
+        "eval/loss": "0.8588359951972961",
         "rev": "workspace",
-        "step": "4",
-        "train/categorical_accuracy": "0.882152795791626"
+        "step": "4"
     },
     {
+        "eval/loss": "0.8119430541992188",
         "rev": "workspace",
-        "step": "5",
-        "train/categorical_accuracy": "0.886586606502533"
+        "step": "5"
     },
     {
+        "eval/loss": "0.8316165804862976",
         "rev": "workspace",
-        "step": "6",
-        "train/categorical_accuracy": "0.8899235129356384"
+        "step": "6"
     },
     {
+        "eval/loss": "0.7327701449394226",
         "rev": "workspace",
-        "step": "7",
-        "train/categorical_accuracy": "0.8925299644470215"
+        "step": "7"
     },
     {
+        "eval/loss": "0.7246638536453247",
         "rev": "workspace",
-        "step": "8",
-        "train/categorical_accuracy": "0.8952091932296753"
+        "step": "8"
     },
     {
+        "eval/loss": "0.7160061597824097",
         "rev": "workspace",
-        "step": "9",
-        "train/categorical_accuracy": "0.8970924019813538"
+        "step": "9"
     },
     {
+        "eval/loss": "0.8134326934814453",
         "rev": "workspace",
-        "step": "10",
-        "train/categorical_accuracy": "0.8985751867294312"
+        "step": "10"
     },
     {
+        "eval/loss": "0.723294198513031",
         "rev": "workspace",
-        "step": "11",
-        "train/categorical_accuracy": "0.9001502394676208"
+        "step": "11"
     },
     {
+        "eval/loss": "0.7124066352844238",
         "rev": "workspace",
-        "step": "12",
-        "train/categorical_accuracy": "0.9009122252464294"
+        "step": "12"
     },
     {
+        "eval/loss": "0.7699777483940125",
         "rev": "workspace",
-        "step": "13",
-        "train/categorical_accuracy": "0.9025649428367615"
+        "step": "13"
     },
     {
+        "eval/loss": "0.7629592418670654",
         "rev": "workspace",
-        "step": "14",
-        "train/categorical_accuracy": "0.9030939936637878"
+        "step": "14"
     },
     {
+        "eval/loss": "0.6870533227920532",
         "rev": "workspace",
-        "step": "15",
-        "train/categorical_accuracy": "0.9039166569709778"
+        "step": "15"
     },
     {
+        "eval/loss": "0.7325232625007629",
         "rev": "workspace",
-        "step": "16",
-        "train/categorical_accuracy": "0.9050306081771851"
+        "step": "16"
     },
     {
+        "eval/loss": "0.7431197166442871",
         "rev": "workspace",
-        "step": "17",
-        "train/categorical_accuracy": "0.9057173728942871"
+        "step": "17"
     },
     {
+        "eval/loss": "0.7545520663261414",
         "rev": "workspace",
-        "step": "18",
-        "train/categorical_accuracy": "0.9064575433731079"
+        "step": "18"
     },
     {
+        "eval/loss": "0.7011250853538513",
         "rev": "workspace",
-        "step": "19",
-        "train/categorical_accuracy": "0.9069405198097229"
+        "step": "19"
     },
     {
+        "eval/loss": "0.6874526143074036",
         "rev": "workspace",
-        "step": "20",
-        "train/categorical_accuracy": "0.9069380760192871"
+        "step": "20"
     }
 ]
     },
@@ -554,9 +355,9 @@
                     "title": "step"
                 },
                 "y": {
-                    "field": "train/categorical_accuracy",
+                    "field": "eval/loss",
                     "type": "quantitative",
-                    "title": "train/categorical_accuracy",
+                    "title": "eval/loss",
                     "scale": {
                         "zero": false
                     }
@@ -571,7 +372,7 @@
                         "type": "quantitative"
                     },
                     {
-                        "field": "train/categorical_accuracy",
+                        "field": "eval/loss",
                         "type": "quantitative"
                     },
                     {
@@ -623,7 +424,7 @@
     ]
 }
 ;
-            vegaEmbed('#static_train_categorical_accuracy', spec);
+            vegaEmbed('#static_eval_loss', spec);
         </script>
     </div>
     
@@ -637,107 +438,107 @@
     {
         "rev": "workspace",
         "step": "0",
-        "train/loss": "1.254371166229248"
+        "train/loss": "1.2537753582000732"
     },
     {
         "rev": "workspace",
         "step": "1",
-        "train/loss": "0.860785722732544"
+        "train/loss": "0.8603401780128479"
     },
     {
         "rev": "workspace",
         "step": "2",
-        "train/loss": "0.7656483054161072"
+        "train/loss": "0.7664366364479065"
     },
     {
         "rev": "workspace",
         "step": "3",
-        "train/loss": "0.704743504524231"
+        "train/loss": "0.7051876187324524"
     },
     {
         "rev": "workspace",
         "step": "4",
-        "train/loss": "0.6607900857925415"
+        "train/loss": "0.6609355211257935"
     },
     {
         "rev": "workspace",
         "step": "5",
-        "train/loss": "0.6252296566963196"
+        "train/loss": "0.6258422136306763"
     },
     {
         "rev": "workspace",
         "step": "6",
-        "train/loss": "0.5981554388999939"
+        "train/loss": "0.5984463095664978"
     },
     {
         "rev": "workspace",
         "step": "7",
-        "train/loss": "0.5755199790000916"
+        "train/loss": "0.5774477124214172"
     },
     {
         "rev": "workspace",
         "step": "8",
-        "train/loss": "0.5569422841072083"
+        "train/loss": "0.5590798854827881"
     },
     {
         "rev": "workspace",
         "step": "9",
-        "train/loss": "0.5423928499221802"
+        "train/loss": "0.543563961982727"
     },
     {
         "rev": "workspace",
         "step": "10",
-        "train/loss": "0.5302578806877136"
+        "train/loss": "0.5314322113990784"
     },
     {
         "rev": "workspace",
         "step": "11",
-        "train/loss": "0.5205328464508057"
+        "train/loss": "0.5202481150627136"
     },
     {
         "rev": "workspace",
         "step": "12",
-        "train/loss": "0.5121738910675049"
+        "train/loss": "0.5122561454772949"
     },
     {
         "rev": "workspace",
         "step": "13",
-        "train/loss": "0.5039983987808228"
+        "train/loss": "0.5036195516586304"
     },
     {
         "rev": "workspace",
         "step": "14",
-        "train/loss": "0.49869462847709656"
+        "train/loss": "0.49840715527534485"
     },
     {
         "rev": "workspace",
         "step": "15",
-        "train/loss": "0.49359437823295593"
+        "train/loss": "0.49283552169799805"
     },
     {
         "rev": "workspace",
         "step": "16",
-        "train/loss": "0.4877282679080963"
+        "train/loss": "0.48850134015083313"
     },
     {
         "rev": "workspace",
         "step": "17",
-        "train/loss": "0.48264530301094055"
+        "train/loss": "0.4828338027000427"
     },
     {
         "rev": "workspace",
         "step": "18",
-        "train/loss": "0.47938984632492065"
+        "train/loss": "0.4792635142803192"
     },
     {
         "rev": "workspace",
         "step": "19",
-        "train/loss": "0.47657299041748047"
+        "train/loss": "0.47758638858795166"
     },
     {
         "rev": "workspace",
         "step": "20",
-        "train/loss": "0.4745083451271057"
+        "train/loss": "0.47374260425567627"
     }
 ]
     },
@@ -823,6 +624,205 @@
 }
 ;
             vegaEmbed('#static_train_loss', spec);
+        </script>
+    </div>
+    
+
+    <div id = "static_train_categorical_accuracy">
+        <script type = "text/javascript">
+            var spec = {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "values": [
+    {
+        "rev": "workspace",
+        "step": "0",
+        "train/categorical_accuracy": "0.771561861038208"
+    },
+    {
+        "rev": "workspace",
+        "step": "1",
+        "train/categorical_accuracy": "0.853484570980072"
+    },
+    {
+        "rev": "workspace",
+        "step": "2",
+        "train/categorical_accuracy": "0.8687251210212708"
+    },
+    {
+        "rev": "workspace",
+        "step": "3",
+        "train/categorical_accuracy": "0.8769084215164185"
+    },
+    {
+        "rev": "workspace",
+        "step": "4",
+        "train/categorical_accuracy": "0.8826794028282166"
+    },
+    {
+        "rev": "workspace",
+        "step": "5",
+        "train/categorical_accuracy": "0.8862031698226929"
+    },
+    {
+        "rev": "workspace",
+        "step": "6",
+        "train/categorical_accuracy": "0.8903943300247192"
+    },
+    {
+        "rev": "workspace",
+        "step": "7",
+        "train/categorical_accuracy": "0.89236980676651"
+    },
+    {
+        "rev": "workspace",
+        "step": "8",
+        "train/categorical_accuracy": "0.8945150971412659"
+    },
+    {
+        "rev": "workspace",
+        "step": "9",
+        "train/categorical_accuracy": "0.8961799144744873"
+    },
+    {
+        "rev": "workspace",
+        "step": "10",
+        "train/categorical_accuracy": "0.8981068134307861"
+    },
+    {
+        "rev": "workspace",
+        "step": "11",
+        "train/categorical_accuracy": "0.8997254967689514"
+    },
+    {
+        "rev": "workspace",
+        "step": "12",
+        "train/categorical_accuracy": "0.9008539915084839"
+    },
+    {
+        "rev": "workspace",
+        "step": "13",
+        "train/categorical_accuracy": "0.9021475315093994"
+    },
+    {
+        "rev": "workspace",
+        "step": "14",
+        "train/categorical_accuracy": "0.9028609991073608"
+    },
+    {
+        "rev": "workspace",
+        "step": "15",
+        "train/categorical_accuracy": "0.9035817980766296"
+    },
+    {
+        "rev": "workspace",
+        "step": "16",
+        "train/categorical_accuracy": "0.9044505953788757"
+    },
+    {
+        "rev": "workspace",
+        "step": "17",
+        "train/categorical_accuracy": "0.9056639671325684"
+    },
+    {
+        "rev": "workspace",
+        "step": "18",
+        "train/categorical_accuracy": "0.9062561392784119"
+    },
+    {
+        "rev": "workspace",
+        "step": "19",
+        "train/categorical_accuracy": "0.9064842462539673"
+    },
+    {
+        "rev": "workspace",
+        "step": "20",
+        "train/categorical_accuracy": "0.9077510833740234"
+    }
+]
+    },
+    "title": "",
+    "width": 300,
+    "height": 300,
+    "layer": [
+        {
+            "encoding": {
+                "x": {
+                    "field": "step",
+                    "type": "quantitative",
+                    "title": "step"
+                },
+                "y": {
+                    "field": "train/categorical_accuracy",
+                    "type": "quantitative",
+                    "title": "train/categorical_accuracy",
+                    "scale": {
+                        "zero": false
+                    }
+                },
+                "color": {
+                    "field": "rev",
+                    "type": "nominal"
+                },
+                "tooltip": [
+                    {
+                        "field": "step",
+                        "type": "quantitative"
+                    },
+                    {
+                        "field": "train/categorical_accuracy",
+                        "type": "quantitative"
+                    },
+                    {
+                        "field": "rev",
+                        "type": "nominal"
+                    }
+                ]
+            },
+            "layer": [
+                {
+                    "mark": "line"
+                },
+                {
+                    "transform": [
+                        {
+                            "filter": {
+                                "param": "hover",
+                                "empty": false
+                            }
+                        }
+                    ],
+                    "mark": "circle"
+                },
+                {
+                    "mark": "rule",
+                    "params": [
+                        {
+                            "name": "hover",
+                            "select": {
+                                "type": "point",
+                                "on": "mouseover",
+                                "nearest": true
+                            }
+                        }
+                    ],
+                    "encoding": {
+                        "color": {
+                            "condition": {
+                                "param": "hover",
+                                "empty": false,
+                                "value": "1"
+                            },
+                            "value": "transparent"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
+;
+            vegaEmbed('#static_train_categorical_accuracy', spec);
         </script>
     </div>
     

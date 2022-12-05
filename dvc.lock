@@ -7,14 +7,14 @@ stages:
       md5: 424fdb295f5099b7e1c300f9c75997bb
       size: 156492
     - path: data/data/processed/test.parquet
-      md5: f8fa134f0cd0e03d27dc2290f6a9f7f3
-      size: 550776866
+      md5: 41627902ab0ac3946142d7261fa08c01
+      size: 550777504
     - path: data/data/processed/train.parquet
-      md5: d61a806ce3446933442b9db1e3dbe347
-      size: 1574760296
+      md5: 51f78d0176ae351d9df606daecabb3fb
+      size: 1574769596
     - path: data/data/processed/validation.parquet
-      md5: 6ecdb1851a3f98944ce84c1717bb409f
-      size: 551882138
+      md5: 831ba9e5cc06736366aceb5a8cc2a918
+      size: 551860282
     - path: data/data/raw/test_labels.parquet
       md5: 3c49eed09d82258bd4ace366b9139722
       size: 1075735
@@ -25,9 +25,9 @@ stages:
       md5: d974f809f1f6d1bfe884497cf9644b2f
       size: 1075411
     - path: sherlock
-      md5: 7eecf5a4e1398b692c88255955aa0abc.dir
-      size: 2254669253
-      nfiles: 33
+      md5: 9640002a1f53bc9ef4cd60f62950ecce.dir
+      size: 2254672647
+      nfiles: 34
     params:
       params.yaml:
         dropout_rate: 0.35
@@ -48,14 +48,14 @@ stages:
         validation_steps: 5
     outs:
     - path: dvclive/metrics.json
-      md5: b4071c43f365605a9958850bd8e9820b
-      size: 235
+      md5: fe0ad03bece5b48e574a54d9effb23db
+      size: 236
     - path: dvclive/plots
-      md5: f987c20dd54b316fedd349d0757c64e3.dir
+      md5: bfe2ba3505241fc7f202915498bf4249.dir
       size: 1897
       nfiles: 4
     - path: model_files/
-      md5: 4de9c361eb2a8ab928ea201886f72751.dir
+      md5: 515ae1840bd35dc9e13136ce149eb373.dir
       size: 6237660
       nfiles: 2
   preprocess:
