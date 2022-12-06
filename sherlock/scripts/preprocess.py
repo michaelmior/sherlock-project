@@ -21,7 +21,7 @@ data_dir = os.path.join(os.path.dirname(__file__), '..', '..', 'data', 'data')
 
 print(f'Started at {datetime.now()}.')
 
-if not os.path.exists(os.path.join(os.path.dirname(__file__), '..', 'features', 'par_vec_trained_400.pkl.docvecs.vectors_docs.npy')):
+if not os.path.exists(os.path.join(os.path.dirname(__file__), '..', '..', 'features', 'par_vec_trained_400.pkl.docvecs.vectors_docs.npy')):
     raise SystemExit(
         """
         Trained paragraph vectors do not exist,

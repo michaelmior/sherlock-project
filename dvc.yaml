@@ -5,10 +5,10 @@ stages:
     - data/data/raw/test_values.parquet
     - data/data/raw/train_values.parquet
     - data/data/raw/val_values.parquet
-    - sherlock/features/par_vec_trained_400.pkl
-    - sherlock/features/par_vec_trained_400.pkl.docvecs.vectors_docs.npy
-    - sherlock/features/par_vec_trained_400.pkl.trainables.syn1neg.npy
-    - sherlock/features/par_vec_trained_400.pkl.wv.vectors.npy
+    - features/par_vec_trained_400.pkl
+    - features/par_vec_trained_400.pkl.docvecs.vectors_docs.npy
+    - features/par_vec_trained_400.pkl.trainables.syn1neg.npy
+    - features/par_vec_trained_400.pkl.wv.vectors.npy
     - sherlock
     - Pipfile.lock
     outs:
@@ -26,6 +26,7 @@ stages:
     - data/data/raw/val_labels.parquet
     - data/data/processed/test.parquet
     - data/data/raw/test_labels.parquet
+    - features/feature_column_identifiers
     - sherlock
     - Pipfile.lock
     outs:

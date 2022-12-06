@@ -24,7 +24,7 @@ def extract_regexes_features(col_values: list, features: OrderedDict, n_val):
         return
 
     if db is None:
-        with open(os.path.join(os.path.dirname(__file__), 'hs.db'), 'rb') as f:
+        with open(os.path.join(os.path.dirname(__file__), '..', '..', 'features', 'hs.db'), 'rb') as f:
             db = hyperscan.loadb(f.read())
 
     for i in range(NUM_PATTERNS):

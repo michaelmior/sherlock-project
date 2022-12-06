@@ -1,0 +1,4 @@
+outs:
+- md5: 02c1889619e759fad92732cdc147ff7a
+  size: 26531740
+  path: par_vec_trained_400.pkl

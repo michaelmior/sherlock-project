@@ -22,10 +22,11 @@ from sherlock.features.helpers import literal_eval_as_str, keys_to_csv
 
 def prepare_feature_extraction():
     """Download embedding files from Google Drive if they do not exist yet."""
-    word_embedding_file = os.path.join(os.path.dirname(__file__), 'glove.6B.50d.txt')
-    first_paragraph_vector_file = os.path.join(os.path.dirname(__file__), 'par_vec_trained_400.pkl.docvecs.vectors_docs.npy')
-    second_paragraph_vector_file = os.path.join(os.path.dirname(__file__), 'par_vec_trained_400.pkl.trainables.syn1neg.npy')
-    third_paragraph_vector_file = os.path.join(os.path.dirname(__file__), 'par_vec_trained_400.pkl.wv.vectors.npy')
+    data_path = os.path.join(os.path.dirname(__file__), '..', '..', 'features')
+    word_embedding_file = os.path.join(data_path, 'glove.6B.50d.txt')
+    first_paragraph_vector_file = os.path.join(data_path, 'par_vec_trained_400.pkl.docvecs.vectors_docs.npy')
+    second_paragraph_vector_file = os.path.join(data_path, 'par_vec_trained_400.pkl.trainables.syn1neg.npy')
+    third_paragraph_vector_file = os.path.join(data_path, 'par_vec_trained_400.pkl.wv.vectors.npy')
 
     print(
         f"""Preparing feature extraction by downloading 4 files:

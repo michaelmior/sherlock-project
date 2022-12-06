@@ -1,0 +1,4 @@
+outs:
+- md5: 8ceefa7b5c2c9a1c7b9a116fbefd9bdc
+  size: 595870528
+  path: par_vec_trained_400.pkl.wv.vectors.npy
