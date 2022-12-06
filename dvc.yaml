@@ -9,6 +9,8 @@ stages:
     - sherlock/features/par_vec_trained_400.pkl.docvecs.vectors_docs.npy
     - sherlock/features/par_vec_trained_400.pkl.trainables.syn1neg.npy
     - sherlock/features/par_vec_trained_400.pkl.wv.vectors.npy
+    - sherlock
+    - Pipfile.lock
     outs:
     - data/data/processed/train.parquet
     - data/data/processed/test.parquet

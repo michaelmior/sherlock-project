@@ -61,6 +61,9 @@ stages:
   preprocess:
     cmd: pipenv run python sherlock/scripts/preprocess.py
     deps:
+    - path: Pipfile.lock
+      md5: 424fdb295f5099b7e1c300f9c75997bb
+      size: 156492
     - path: data/data/raw/test_values.parquet
       md5: 3bec4370ec05849aac49b5b32843ba9e
       size: 92889349
@@ -70,6 +73,10 @@ stages:
     - path: data/data/raw/val_values.parquet
       md5: 10385153a11ebc350d5417ea066d6792
       size: 95492484
+    - path: sherlock
+      md5: 9640002a1f53bc9ef4cd60f62950ecce.dir
+      size: 2254672647
+      nfiles: 34
     - path: sherlock/features/par_vec_trained_400.pkl
       md5: 02c1889619e759fad92732cdc147ff7a
       size: 26531740
