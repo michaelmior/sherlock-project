@@ -11,7 +11,7 @@ import io
 #
 # NOTE: Make sure that each item that is escaped has the escaping here. The file may be regenerated using
 #       generate_chars_col() below.
-#          sherlock/features/feature_column_identifiers/char_col.tsv
+#          features/feature_column_identifiers/char_col.tsv
 def escape_for_regex(c):
     if c in ('[', ']', '\\', '^', '-'):
         return '\\' + c
@@ -32,7 +32,7 @@ CHARACTERS_TO_CHECK = (
 # generate_chars_col()
 def generate_chars_col():
     idx = 0
-    with open(os.path.join(os.path.dirname(__file__), 'feature_column_identifiers', 'char_col.tsv'), "w") as char_col:
+    with open(os.path.join(os.path.dirname(__file__), '..', '..', 'features', 'feature_column_identifiers', 'char_col.tsv'), "w") as char_col:
         for c in CHARACTERS_TO_CHECK:
             for operation in ('any', 'all', 'mean', 'var', 'min', 'max', 'median', 'sum', 'kurtosis', 'skewness'):
                 col_header = f'n_{c}-agg-{operation}'
