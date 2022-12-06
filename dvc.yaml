@@ -15,6 +15,15 @@ stages:
     - data/data/processed/train.parquet
     - data/data/processed/test.parquet
     - data/data/processed/validation.parquet
+  regex_feature_selection:
+    cmd: pipenv run python sherlock/scripts/regex_feature_selection.py
+    deps:
+    - data/data/processed/train.parquet
+    - data/data/raw/train_labels.parquet
+    - sherlock/scripts/regex_feature_selection.py
+    - Pipfile.lock
+    outs:
+    - features/feature_column_identifiers/regex_col.tsv
   train:
     cmd: pipenv run python sherlock/scripts/train.py
     params:

@@ -25,13 +25,13 @@ stages:
       md5: d974f809f1f6d1bfe884497cf9644b2f
       size: 1075411
     - path: features/feature_column_identifiers
-      md5: 070f6381d373ea3d15fd7aadacb5550f.dir
-      size: 138905
-      nfiles: 5
+      md5: 3d7d749ec316dc343751b1c9eb2e03f3.dir
+      size: 45037
+      nfiles: 6
     - path: sherlock
-      md5: 85e95b35e9b7be7ba39a77ee8db9b452.dir
-      size: 57840
-      nfiles: 18
+      md5: 15227e3bceadfa949c260dfcd6c11a38.dir
+      size: 58836
+      nfiles: 19
     params:
       params.yaml:
         dropout_rate: 0.35
@@ -90,9 +90,9 @@ stages:
       md5: 8ceefa7b5c2c9a1c7b9a116fbefd9bdc
       size: 595870528
     - path: sherlock
-      md5: 85e95b35e9b7be7ba39a77ee8db9b452.dir
-      size: 57840
-      nfiles: 18
+      md5: 15227e3bceadfa949c260dfcd6c11a38.dir
+      size: 58836
+      nfiles: 19
     outs:
     - path: data/data/processed/test.parquet
       md5: 56d52150e16a7935cc06571f5f5b2d02
@@ -103,3 +103,22 @@ stages:
     - path: data/data/processed/validation.parquet
       md5: 9a2060e964769c224ed8a0ad32f6c8ed
       size: 551862409
+  regex_feature_selection:
+    cmd: pipenv run python sherlock/scripts/regex_feature_selection.py
+    deps:
+    - path: Pipfile.lock
+      md5: 424fdb295f5099b7e1c300f9c75997bb
+      size: 156492
+    - path: data/data/processed/train.parquet
+      md5: 334d89dbb0d648e1e8fd6007f57a0ad5
+      size: 1574760732
+    - path: data/data/raw/train_labels.parquet
+      md5: 91e0b05d41f63d72a8fa2f17b71e2ca0
+      size: 2665143
+    - path: sherlock/scripts/regex_feature_selection.py
+      md5: 8c842a02fbaf6a32536ef84bbe382ba2
+      size: 996
+    outs:
+    - path: features/feature_column_identifiers/regex_col.tsv
+      md5: 69b428158b9fb1f7160743de84de3457
+      size: 14700
