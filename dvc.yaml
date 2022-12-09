@@ -24,6 +24,14 @@ stages:
     - Pipfile.lock
     outs:
     - features/feature_column_identifiers/regex_col.tsv
+  regex_pca:
+    cmd: pipenv run python sherlock/scripts/regex_pca.py
+    deps:
+    - data/data/processed/train.parquet
+    - sherlock/scripts/regex_pca.py
+    - Pipfile.lock
+    outs:
+    - features/regex_pca.pkl
   train:
     cmd: pipenv run python sherlock/scripts/train.py
     params:

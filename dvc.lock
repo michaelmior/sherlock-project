@@ -48,19 +48,20 @@ stages:
         - char
         - word
         - par
+        - regex
         - rest
         validation_steps: 5
     outs:
     - path: dvclive/metrics.json
-      md5: 24a24c4f9bdc701386209811ff58453a
-      size: 236
+      md5: 961f8fe205784671988fce4e261d90bb
+      size: 234
     - path: dvclive/plots
-      md5: b47152a50717e0952f07455c2f3918c0.dir
-      size: 1718
+      md5: 4761b4b4c6c6e080b6247ff4bf6b964a.dir
+      size: 1720
       nfiles: 4
     - path: model_files/
-      md5: 84ed44522dff6327592eef78651086cd.dir
-      size: 6237660
+      md5: 3e34604a4dea04f68c665820b933facb.dir
+      size: 16289300
       nfiles: 2
   preprocess:
     cmd: pipenv run python sherlock/scripts/preprocess.py
@@ -122,3 +123,19 @@ stages:
     - path: features/feature_column_identifiers/regex_col.tsv
       md5: 69b428158b9fb1f7160743de84de3457
       size: 14700
+  regex_pca:
+    cmd: pipenv run python sherlock/scripts/regex_pca.py
+    deps:
+    - path: Pipfile.lock
+      md5: 424fdb295f5099b7e1c300f9c75997bb
+      size: 156492
+    - path: data/data/processed/train.parquet
+      md5: 334d89dbb0d648e1e8fd6007f57a0ad5
+      size: 1574760732
+    - path: sherlock/scripts/regex_pca.py
+      md5: 4f09d5bfa491af03471d1235e8d4ed90
+      size: 615
+    outs:
+    - path: features/regex_pca.pkl
+      md5: a4053c54193d830e3123e762caecf3bf
+      size: 27837543

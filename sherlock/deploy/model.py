@@ -51,12 +51,6 @@ class SherlockModel:
         for submodel_name in self.params['submodels']:
             X_vals.append(X_val[feature_cols[submodel_name]].values)
 
-        # X_val_char = X_val[feature_cols["char"]]
-        # X_val_word = X_val[feature_cols["word"]]
-        # X_val_par = X_val[feature_cols["par"]]
-        # X_val_regex = X_val[feature_cols["regex"]]
-        # X_val_rest = X_val[feature_cols["rest"]]
-
         y_train_int = encoder.transform(y_train)
         y_val_int = encoder.transform(y_val)
         y_train_cat = tf.keras.utils.to_categorical(y_train_int)
@@ -71,22 +65,12 @@ class SherlockModel:
             submodel_inputs.append(submodel_input)
             submodels.append(submodel)
 
-        # char_model_input, char_model = self._build_char_submodel(len(feature_cols["char"]))
-        # word_model_input, word_model = self._build_word_submodel(len(feature_cols["word"]))
-        # par_model_input, par_model = self._build_par_submodel(len(feature_cols["par"]))
-        # regex_model_input, regex_model = self._build_regex_submodel(len(feature_cols["regex"]))
-        # rest_model_input, rest_model = self._build_rest_submodel(len(feature_cols["rest"]))
-
         # Merge submodels and build main network
-        # merged_model1 = concatenate([char_model, word_model, par_model, regex_model, rest_model])
-        # merged_model1 = concatenate([char_model, word_model, par_model, rest_model])
         merged_model1 = concatenate(submodels)
 
         merged_model_output = self._add_main_layers(merged_model1, num_classes)
 
         model = Model(
-            # [char_model_input, word_model_input, par_model_input, regex_model_input, rest_model_input],
-            # [char_model_input, word_model_input, par_model_input, rest_model_input],
             submodel_inputs,
             merged_model_output,
         )
@@ -106,33 +90,13 @@ class SherlockModel:
         for submodel_name in self.params['submodels']:
             X_trains.append(X[feature_cols[submodel_name]].values)
 
-        # X_train_char = X[feature_cols["char"]]
-        # X_train_word = X[feature_cols["word"]]
-        # X_train_par = X[feature_cols["par"]]
-        # X_train_regex = X[feature_cols["regex"]]
-        # X_train_rest = X[feature_cols["rest"]]
-
         model.fit(
-            # x=[
-            #     X_train_char.values,
-            #     X_train_word.values,
-            #     X_train_par.values,
-            #     # X_train_regex.values,
-            #     X_train_rest.values,
-            # ],
             x=X_trains,
             y=y_train_cat,
             #y=y_train_cat[start_idx:end_idx],
             #validation_data=X_val,
             validation_steps=self.params['validation_steps'],
             validation_data=(
-                # [
-                #     X_val_char.values,
-                #     X_val_word.values,
-                #     X_val_par.values,
-                #     #X_val_regex.values,
-                #     X_val_rest.values,
-                # ],
                 X_vals,
                 y_val_cat,
             ),

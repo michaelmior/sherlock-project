@@ -13,5 +13,5 @@ submodels:
   - char
   - word
   - par
-  # - regex
+  - regex
   - rest
