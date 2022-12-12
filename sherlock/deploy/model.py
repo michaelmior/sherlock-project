@@ -250,9 +250,15 @@ class SherlockModel:
         weights_filename = os.path.join(
             self.model_files_directory, f"{model_id}_weights.h5"
         )
+        model_filename = os.path.join(
+            self.model_files_directory, f"{model_id}_model.json"
+        )
 
         os.makedirs(self.model_files_directory, exist_ok=True)
         self.model.save_weights(weights_filename)
+
+        with open(model_filename, 'w') as model_file:
+            model_file.write(self.model.to_json())
 
     def _build_char_submodel(self, char_shape):
         n_weights = 300

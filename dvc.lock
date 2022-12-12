@@ -29,9 +29,9 @@ stages:
       size: 45037
       nfiles: 6
     - path: sherlock
-      md5: 15227e3bceadfa949c260dfcd6c11a38.dir
-      size: 58836
-      nfiles: 19
+      md5: 30a8692014f97551060c9eeab73065e7.dir
+      size: 60099
+      nfiles: 20
     params:
       params.yaml:
         dropout_rate: 0.35
@@ -52,16 +52,21 @@ stages:
         validation_steps: 5
     outs:
     - path: dvclive/metrics.json
-      md5: 24a24c4f9bdc701386209811ff58453a
+      md5: ba9d023461cbdd706f21d840c60c9e41
       size: 236
     - path: dvclive/plots
-      md5: b47152a50717e0952f07455c2f3918c0.dir
-      size: 1718
+      md5: b8d6941bbca04fc3d4625aed222e7482.dir
+      size: 1454
       nfiles: 4
-    - path: model_files/
-      md5: 84ed44522dff6327592eef78651086cd.dir
-      size: 6237660
-      nfiles: 2
+    - path: model_files/classes_retrained_sherlock.npy
+      md5: 6a1b3bc0d77b6047ada00ff688b4f8f6
+      size: 4496
+    - path: model_files/retrained_sherlock_model.json
+      md5: bd76cea698ceedd7c95cdf486b514866
+      size: 10264
+    - path: model_files/retrained_sherlock_weights.h5
+      md5: 2844ecf5eb0da83d4590a6f5fbd92438
+      size: 6233164
   preprocess:
     cmd: pipenv run python sherlock/scripts/preprocess.py
     deps:
@@ -122,3 +127,9 @@ stages:
     - path: features/feature_column_identifiers/regex_col.tsv
       md5: 69b428158b9fb1f7160743de84de3457
       size: 14700
+  generate_confusion_matrix:
+    cmd: pipenv run python sherlock/scripts/generate_confusion_matrix.py
+    outs:
+    - path: model_files/retrained_sherlock_confusion.txt
+      md5: 7a6ed7b9b100de362e6a9f72928c473e
+      size: 120815
