@@ -129,6 +129,16 @@ stages:
       size: 14700
   generate_confusion_matrix:
     cmd: pipenv run python sherlock/scripts/generate_confusion_matrix.py
+    deps:
+    - path: model_files/classes_retrained_sherlock.npy
+      md5: 6a1b3bc0d77b6047ada00ff688b4f8f6
+      size: 4496
+    - path: model_files/retrained_sherlock_model.json
+      md5: bd76cea698ceedd7c95cdf486b514866
+      size: 10264
+    - path: model_files/retrained_sherlock_weights.h5
+      md5: 2844ecf5eb0da83d4590a6f5fbd92438
+      size: 6233164
     outs:
     - path: model_files/retrained_sherlock_confusion.txt
       md5: 7a6ed7b9b100de362e6a9f72928c473e

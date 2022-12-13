@@ -50,5 +50,9 @@ stages:
         cache: false
   generate_confusion_matrix:
     cmd: pipenv run python sherlock/scripts/generate_confusion_matrix.py
+    deps:
+    - model_files/classes_retrained_sherlock.npy
+    - model_files/retrained_sherlock_model.json
+    - model_files/retrained_sherlock_weights.h5
     outs:
     - model_files/retrained_sherlock_confusion.txt
