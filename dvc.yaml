@@ -7,6 +7,7 @@ stages:
     do:
       cmd: pipenv run python sherlock/scripts/preprocess.py ${item}
       deps:
+      - Pipfile.lock
       - data/data/raw/${item}_values.parquet
       - data/data/raw/${item}_values.parquet
       - data/data/raw/${item}_values.parquet
@@ -14,45 +15,61 @@ stages:
       - features/par_vec_trained_400.pkl.docvecs.vectors_docs.npy
       - features/par_vec_trained_400.pkl.trainables.syn1neg.npy
       - features/par_vec_trained_400.pkl.wv.vectors.npy
-      - sherlock
-      - Pipfile.lock
+      - sherlock/features/preprocessing.py
+      - sherlock/features/regexes.py
+      - sherlock/global_state.py
+      - sherlock/features/stats_helper.py
+      - sherlock/features/helpers.py
+      - sherlock/features/bag_of_words.py
+      - sherlock/helpers.py
+      - sherlock/functional.py
+      - sherlock/features/paragraph_vectors.py
+      - sherlock/features/word_embeddings.py
+      - sherlock/features/bag_of_characters.py
+      - sherlock/features/__init__.py
+      - sherlock/__init__.py
+      - sherlock/scripts/preprocess.py
       outs:
       - data/data/processed/${item}.csv
   convert:
     cmd: pipenv run python sherlock/scripts/convert.py
     deps:
+    - Pipfile.lock
+    - data/data/processed/test.csv
     - data/data/processed/train.csv
     - data/data/processed/validation.csv
-    - data/data/processed/test.csv
-    - sherlock
-    - Pipfile.lock
+    - sherlock/scripts/convert.py
     outs:
+    - data/data/processed/test.parquet
     - data/data/processed/train.parquet
     - data/data/processed/validation.parquet
-    - data/data/processed/test.parquet
   regex_feature_selection:
     cmd: pipenv run python sherlock/scripts/regex_feature_selection.py
     deps:
+    - Pipfile.lock
     - data/data/processed/train.parquet
     - data/data/raw/train_labels.parquet
     - sherlock/scripts/regex_feature_selection.py
-    - Pipfile.lock
     outs:
     - features/feature_column_identifiers/regex_col.tsv
   train:
     cmd: pipenv run python sherlock/scripts/train.py
     params:
-      - params.yaml:
+    - params.yaml:
     deps:
-    - data/data/processed/train.parquet
-    - data/data/raw/train_labels.parquet
-    - data/data/processed/validation.parquet
-    - data/data/raw/validation_labels.parquet
-    - data/data/processed/test.parquet
-    - data/data/raw/test_labels.parquet
-    - features/feature_column_identifiers
-    - sherlock
     - Pipfile.lock
+    - data/data/processed/test.parquet
+    - data/data/processed/train.parquet
+    - data/data/processed/validation.parquet
+    - data/data/raw/test_labels.parquet
+    - data/data/raw/train_labels.parquet
+    - data/data/raw/validation_labels.parquet
+    - features/feature_column_identifiers
+    - sherlock/__init__.py
+    - sherlock/deploy/__init__.py
+    - sherlock/deploy/helpers.py
+    - sherlock/deploy/model.py
+    - sherlock/scripts/train.py
     outs:
     - model_files/classes_retrained_sherlock.npy
     - model_files/retrained_sherlock_model.json
@@ -69,5 +86,10 @@ stages:
     - model_files/classes_retrained_sherlock.npy
     - model_files/retrained_sherlock_model.json
     - model_files/retrained_sherlock_weights.h5
+    - sherlock/deploy/__init__.py
+    - sherlock/deploy/helpers.py
+    - sherlock/deploy/model.py
+    - sherlock/__init__.py
+    - sherlock/scripts/generate_confusion_matrix.py
     outs:
     - model_files/retrained_sherlock_confusion.txt

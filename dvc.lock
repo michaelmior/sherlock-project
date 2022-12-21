@@ -28,10 +28,21 @@ stages:
       md5: 57512111062714a4c879014b78a7568c.dir
       size: 45038
       nfiles: 6
-    - path: sherlock
-      md5: 58e09874ec0e04a5a250f0193a9a8466.dir
-      size: 60040
-      nfiles: 22
+    - path: sherlock/__init__.py
+      md5: d41d8cd98f00b204e9800998ecf8427e
+      size: 0
+    - path: sherlock/deploy/__init__.py
+      md5: d41d8cd98f00b204e9800998ecf8427e
+      size: 0
+    - path: sherlock/deploy/helpers.py
+      md5: 3dc2c5dcea25f9c2a326a3c5d540acc6
+      size: 2709
+    - path: sherlock/deploy/model.py
+      md5: 2ad72ca6cf9ff3028dcce530b77a779a
+      size: 13073
+    - path: sherlock/scripts/train.py
+      md5: c2fa66854989027d46f83628edcd893e
+      size: 1995
     params:
       params.yaml:
         dropout_rate: 0.35
@@ -98,6 +109,21 @@ stages:
     - path: model_files/retrained_sherlock_weights.h5
       md5: 52a16226a2ef13a37d07bc5bfb0002d9
       size: 6233164
+    - path: sherlock/__init__.py
+      md5: d41d8cd98f00b204e9800998ecf8427e
+      size: 0
+    - path: sherlock/deploy/__init__.py
+      md5: d41d8cd98f00b204e9800998ecf8427e
+      size: 0
+    - path: sherlock/deploy/helpers.py
+      md5: 3dc2c5dcea25f9c2a326a3c5d540acc6
+      size: 2709
+    - path: sherlock/deploy/model.py
+      md5: 2ad72ca6cf9ff3028dcce530b77a779a
+      size: 13073
+    - path: sherlock/scripts/generate_confusion_matrix.py
+      md5: d6fb93b733df468a1347e3ad3ebbc8e3
+      size: 1194
     outs:
     - path: model_files/retrained_sherlock_confusion.txt
       md5: a2d6f68c9214042d5dc48c3c0b155318
@@ -129,10 +155,48 @@ stages:
     - path: features/par_vec_trained_400.pkl.wv.vectors.npy
       md5: 8ceefa7b5c2c9a1c7b9a116fbefd9bdc
       size: 595870528
-    - path: sherlock
-      md5: 58e09874ec0e04a5a250f0193a9a8466.dir
-      size: 60040
-      nfiles: 22
+    - path: sherlock/__init__.py
+      md5: d41d8cd98f00b204e9800998ecf8427e
+      size: 0
+    - path: sherlock/features/__init__.py
+      md5: d41d8cd98f00b204e9800998ecf8427e
+      size: 0
+    - path: sherlock/features/bag_of_characters.py
+      md5: dd9e79d5f50a923fd4771bdd6a14aeb4
+      size: 3141
+    - path: sherlock/features/bag_of_words.py
+      md5: 7cb95dadfb352b9c7ef63adf02958ff9
+      size: 5067
+    - path: sherlock/features/helpers.py
+      md5: 3645395da6e55ca7a30ff5c603e454f3
+      size: 3413
+    - path: sherlock/features/paragraph_vectors.py
+      md5: d82432c50f7c53bad611f5b4fe20ea6e
+      size: 4420
+    - path: sherlock/features/preprocessing.py
+      md5: f54f006b8bb444b9781dd524c7490eef
+      size: 7191
+    - path: sherlock/features/regexes.py
+      md5: c96eb9d5458660360a606c3b91a6c8ac
+      size: 987
+    - path: sherlock/features/stats_helper.py
+      md5: a6106f8d1a0b8aa81a66c01278d26a3c
+      size: 1143
+    - path: sherlock/features/word_embeddings.py
+      md5: 652ae365763b2358b11242e4c0c08a0c
+      size: 5544
+    - path: sherlock/functional.py
+      md5: 9c90976417c7edc2c93e7f86faf3f2c5
+      size: 5106
+    - path: sherlock/global_state.py
+      md5: 05a6319d760647183289e543af00299a
+      size: 189
+    - path: sherlock/helpers.py
+      md5: 2bc4733005b620c9f7c168e772ca4c45
+      size: 689
+    - path: sherlock/scripts/preprocess.py
+      md5: e424f96622221b344944b4688b17ea9b
+      size: 1423
     outs:
     - path: data/data/processed/train.csv
       md5: f6629869b122d2860a1c5df10300400c
@@ -164,10 +228,48 @@ stages:
     - path: features/par_vec_trained_400.pkl.wv.vectors.npy
       md5: 8ceefa7b5c2c9a1c7b9a116fbefd9bdc
       size: 595870528
-    - path: sherlock
-      md5: 58e09874ec0e04a5a250f0193a9a8466.dir
-      size: 60040
-      nfiles: 22
+    - path: sherlock/__init__.py
+      md5: d41d8cd98f00b204e9800998ecf8427e
+      size: 0
+    - path: sherlock/features/__init__.py
+      md5: d41d8cd98f00b204e9800998ecf8427e
+      size: 0
+    - path: sherlock/features/bag_of_characters.py
+      md5: dd9e79d5f50a923fd4771bdd6a14aeb4
+      size: 3141
+    - path: sherlock/features/bag_of_words.py
+      md5: 7cb95dadfb352b9c7ef63adf02958ff9
+      size: 5067
+    - path: sherlock/features/helpers.py
+      md5: 3645395da6e55ca7a30ff5c603e454f3
+      size: 3413
+    - path: sherlock/features/paragraph_vectors.py
+      md5: d82432c50f7c53bad611f5b4fe20ea6e
+      size: 4420
+    - path: sherlock/features/preprocessing.py
+      md5: f54f006b8bb444b9781dd524c7490eef
+      size: 7191
+    - path: sherlock/features/regexes.py
+      md5: c96eb9d5458660360a606c3b91a6c8ac
+      size: 987
+    - path: sherlock/features/stats_helper.py
+      md5: a6106f8d1a0b8aa81a66c01278d26a3c
+      size: 1143
+    - path: sherlock/features/word_embeddings.py
+      md5: 652ae365763b2358b11242e4c0c08a0c
+      size: 5544
+    - path: sherlock/functional.py
+      md5: 9c90976417c7edc2c93e7f86faf3f2c5
+      size: 5106
+    - path: sherlock/global_state.py
+      md5: 05a6319d760647183289e543af00299a
+      size: 189
+    - path: sherlock/helpers.py
+      md5: 2bc4733005b620c9f7c168e772ca4c45
+      size: 689
+    - path: sherlock/scripts/preprocess.py
+      md5: e424f96622221b344944b4688b17ea9b
+      size: 1423
     outs:
     - path: data/data/processed/test.csv
       md5: 97ba30235f82bcc2170412576ea0d5c2
@@ -199,10 +301,48 @@ stages:
     - path: features/par_vec_trained_400.pkl.wv.vectors.npy
       md5: 8ceefa7b5c2c9a1c7b9a116fbefd9bdc
       size: 595870528
-    - path: sherlock
-      md5: 58e09874ec0e04a5a250f0193a9a8466.dir
-      size: 60040
-      nfiles: 22
+    - path: sherlock/__init__.py
+      md5: d41d8cd98f00b204e9800998ecf8427e
+      size: 0
+    - path: sherlock/features/__init__.py
+      md5: d41d8cd98f00b204e9800998ecf8427e
+      size: 0
+    - path: sherlock/features/bag_of_characters.py
+      md5: dd9e79d5f50a923fd4771bdd6a14aeb4
+      size: 3141
+    - path: sherlock/features/bag_of_words.py
+      md5: 7cb95dadfb352b9c7ef63adf02958ff9
+      size: 5067
+    - path: sherlock/features/helpers.py
+      md5: 3645395da6e55ca7a30ff5c603e454f3
+      size: 3413
+    - path: sherlock/features/paragraph_vectors.py
+      md5: d82432c50f7c53bad611f5b4fe20ea6e
+      size: 4420
+    - path: sherlock/features/preprocessing.py
+      md5: f54f006b8bb444b9781dd524c7490eef
+      size: 7191
+    - path: sherlock/features/regexes.py
+      md5: c96eb9d5458660360a606c3b91a6c8ac
+      size: 987
+    - path: sherlock/features/stats_helper.py
+      md5: a6106f8d1a0b8aa81a66c01278d26a3c
+      size: 1143
+    - path: sherlock/features/word_embeddings.py
+      md5: 652ae365763b2358b11242e4c0c08a0c
+      size: 5544
+    - path: sherlock/functional.py
+      md5: 9c90976417c7edc2c93e7f86faf3f2c5
+      size: 5106
+    - path: sherlock/global_state.py
+      md5: 05a6319d760647183289e543af00299a
+      size: 189
+    - path: sherlock/helpers.py
+      md5: 2bc4733005b620c9f7c168e772ca4c45
+      size: 689
+    - path: sherlock/scripts/preprocess.py
+      md5: e424f96622221b344944b4688b17ea9b
+      size: 1423
     outs:
     - path: data/data/processed/validation.csv
       md5: 66e18a02d17a542fd703a5a6c85faa96
@@ -222,10 +362,9 @@ stages:
     - path: data/data/processed/validation.csv
       md5: 66e18a02d17a542fd703a5a6c85faa96
       size: 3277655017
-    - path: sherlock
-      md5: 58e09874ec0e04a5a250f0193a9a8466.dir
-      size: 60040
-      nfiles: 22
+    - path: sherlock/scripts/convert.py
+      md5: f3463db5c5b8635a731fabad9e705ee2
+      size: 1760
     outs:
     - path: data/data/processed/test.parquet
       md5: 2c8d4fa6c0a4ae12278bf7bfaa44233b

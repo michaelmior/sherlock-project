@@ -47,10 +47,20 @@ if __name__ == '__main__':
     # Update the internal Python dependencies
     for (script_name, deps) in script_deps.items():
         stage_yaml = dvc_yaml['stages'][script_name.split('.')[-1]]
+
+        # Handle cases where we use iteration
+        if 'do' in stage_yaml:
+            stage_yaml = stage_yaml['do']
+
+        # Remove existing dependencies within the sherlock package
         if 'deps' in stage_yaml:
             stage_yaml['deps'] = sorted([d for d in stage_yaml['deps'] if not d.startswith('sherlock')])
+
+        # Add an empty list of dependencies if none is present
         if deps and 'deps' not in stage_yaml:
             stage_yaml['deps'] = []
+
+        # Add the new dependencies
         stage_yaml['deps'] += deps
 
-    yaml.dump(dvc_yaml, sys.stdout)
+    yaml.dump(dvc_yaml, open(dvc_yaml_path, 'w'))
