@@ -1,4 +1,4 @@
 outs:
 - md5: d974f809f1f6d1bfe884497cf9644b2f
   size: 1075411
-  path: val_labels.parquet
+  path: validation_labels.parquet

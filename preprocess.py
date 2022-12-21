@@ -36,5 +36,5 @@ extract_features_to_csv(X_test_filename_csv, values)
 values = load_parquet_values("../data/data/raw/train_values.parquet")
 extract_features_to_csv(X_train_filename_csv, values)
 
-values = load_parquet_values("../data/data/raw/val_values.parquet")
+values = load_parquet_values("../data/data/raw/validation_values.parquet")
 extract_features_to_csv(X_validation_filename_csv, values)

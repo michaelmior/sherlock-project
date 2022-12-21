@@ -29,7 +29,7 @@ start = datetime.now()
 print(f'Started load data (validation) at {start}')
 
 X_validation = pd.read_parquet(os.path.join(data_dir, 'processed', 'validation.parquet'))
-y_validation = pd.read_parquet(os.path.join(data_dir, 'raw', 'val_labels.parquet')).values.flatten()
+y_validation = pd.read_parquet(os.path.join(data_dir, 'raw', 'validation_labels.parquet')).values.flatten()
 
 y_validation = np.array([x.lower() for x in y_validation])
 

@@ -1,11 +1,11 @@
 {
     "train": {
-        "loss": 0.49274128675460815,
-        "categorical_accuracy": 0.9039239287376404
+        "loss": 0.492931991815567,
+        "categorical_accuracy": 0.9036570191383362
     },
     "eval": {
-        "loss": 0.7151474356651306,
-        "categorical_accuracy": 0.8806724548339844
+        "loss": 0.7014763951301575,
+        "categorical_accuracy": 0.8815752267837524
     },
-    "step": 16
+    "step": 15
 }

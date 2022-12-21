@@ -47,9 +47,8 @@ if __name__ == '__main__':
     # Update the internal Python dependencies
     for (script_name, deps) in script_deps.items():
         stage_yaml = dvc_yaml['stages'][script_name.split('.')[-1]]
-        print(stage_yaml)
         if 'deps' in stage_yaml:
-            stage_yaml['deps'] = [d for d in stage_yaml['deps'] if not d.startswith('sherlock')]
+            stage_yaml['deps'] = sorted([d for d in stage_yaml['deps'] if not d.startswith('sherlock')])
         if deps and 'deps' not in stage_yaml:
             stage_yaml['deps'] = []
         stage_yaml['deps'] += deps

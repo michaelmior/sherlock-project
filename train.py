@@ -48,7 +48,7 @@ print(f'Started at {start}')
 
 # X_validation = pd.read_parquet('../data/data/processed/validation.parquet/part-00000-6bc87672-ae10-4bcf-8ea7-faf5c368057e-c000.snappy.parquet')
 # X_validation = read_jsons('../data/data/processed/validation.json.gz')
-y_validation = pd.read_parquet('../data/data/raw/val_labels.parquet').values.flatten()
+y_validation = pd.read_parquet('../data/data/raw/validation_labels.parquet').values.flatten()
 y_validation = np.array([x.lower() for x in y_validation])
 y_val_int = encoder.transform(y_validation)
 y_val_cat = tf.keras.utils.to_categorical(y_val_int)

@@ -1,20 +1,35 @@
 stages:
   preprocess:
-    cmd: pipenv run python sherlock/scripts/preprocess.py
+    foreach:
+    - train
+    - validation
+    - test
+    do:
+      cmd: pipenv run python sherlock/scripts/preprocess.py ${item}
+      deps:
+      - data/data/raw/${item}_values.parquet
+      - data/data/raw/${item}_values.parquet
+      - data/data/raw/${item}_values.parquet
+      - features/par_vec_trained_400.pkl
+      - features/par_vec_trained_400.pkl.docvecs.vectors_docs.npy
+      - features/par_vec_trained_400.pkl.trainables.syn1neg.npy
+      - features/par_vec_trained_400.pkl.wv.vectors.npy
+      - sherlock
+      - Pipfile.lock
+      outs:
+      - data/data/processed/${item}.csv
+  convert:
+    cmd: pipenv run python sherlock/scripts/convert.py
     deps:
-    - data/data/raw/test_values.parquet
-    - data/data/raw/train_values.parquet
-    - data/data/raw/val_values.parquet
-    - features/par_vec_trained_400.pkl
-    - features/par_vec_trained_400.pkl.docvecs.vectors_docs.npy
-    - features/par_vec_trained_400.pkl.trainables.syn1neg.npy
-    - features/par_vec_trained_400.pkl.wv.vectors.npy
+    - data/data/processed/train.csv
+    - data/data/processed/validation.csv
+    - data/data/processed/test.csv
     - sherlock
     - Pipfile.lock
     outs:
     - data/data/processed/train.parquet
-    - data/data/processed/test.parquet
     - data/data/processed/validation.parquet
+    - data/data/processed/test.parquet
   regex_feature_selection:
     cmd: pipenv run python sherlock/scripts/regex_feature_selection.py
     deps:
@@ -32,7 +47,7 @@ stages:
     - data/data/processed/train.parquet
     - data/data/raw/train_labels.parquet
     - data/data/processed/validation.parquet
-    - data/data/raw/val_labels.parquet
+    - data/data/raw/validation_labels.parquet
     - data/data/processed/test.parquet
     - data/data/raw/test_labels.parquet
     - features/feature_column_identifiers
