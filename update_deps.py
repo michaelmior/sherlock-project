@@ -54,13 +54,13 @@ if __name__ == '__main__':
 
         # Remove existing dependencies within the sherlock package
         if 'deps' in stage_yaml:
-            stage_yaml['deps'] = sorted([d for d in stage_yaml['deps'] if not d.startswith('sherlock')])
+            stage_yaml['deps'] = [d for d in stage_yaml['deps'] if not d.startswith('sherlock')]
 
         # Add an empty list of dependencies if none is present
         if deps and 'deps' not in stage_yaml:
             stage_yaml['deps'] = []
 
         # Add the new dependencies
-        stage_yaml['deps'] += deps
+        stage_yaml['deps'] += sorted(deps)
 
     yaml.dump(dvc_yaml, open(dvc_yaml_path, 'w'))

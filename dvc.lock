@@ -375,3 +375,13 @@ stages:
     - path: data/data/processed/validation.parquet
       md5: 6996c3e214039751071aef59fb4bac0f
       size: 796975917
+  update deps:
+    cmd: pipenv run python update_deps.py
+    deps:
+    - path: sherlock
+      md5: 58e09874ec0e04a5a250f0193a9a8466.dir
+      size: 60040
+      nfiles: 22
+    - path: update_deps.py
+      md5: 55451c1efd7b883f403ec27ef5070ef0
+      size: 2271

@@ -15,19 +15,19 @@ stages:
       - features/par_vec_trained_400.pkl.docvecs.vectors_docs.npy
       - features/par_vec_trained_400.pkl.trainables.syn1neg.npy
       - features/par_vec_trained_400.pkl.wv.vectors.npy
+      - sherlock/__init__.py
+      - sherlock/features/__init__.py
+      - sherlock/features/bag_of_characters.py
+      - sherlock/features/bag_of_words.py
+      - sherlock/features/helpers.py
+      - sherlock/features/paragraph_vectors.py
       - sherlock/features/preprocessing.py
       - sherlock/features/regexes.py
-      - sherlock/global_state.py
       - sherlock/features/stats_helper.py
-      - sherlock/features/helpers.py
-      - sherlock/features/bag_of_words.py
-      - sherlock/helpers.py
-      - sherlock/functional.py
-      - sherlock/features/paragraph_vectors.py
       - sherlock/features/word_embeddings.py
-      - sherlock/features/bag_of_characters.py
-      - sherlock/features/__init__.py
-      - sherlock/__init__.py
+      - sherlock/functional.py
+      - sherlock/global_state.py
+      - sherlock/helpers.py
       - sherlock/scripts/preprocess.py
       outs:
       - data/data/processed/${item}.csv
@@ -86,10 +86,15 @@ stages:
     - model_files/classes_retrained_sherlock.npy
     - model_files/retrained_sherlock_model.json
     - model_files/retrained_sherlock_weights.h5
+    - sherlock/__init__.py
     - sherlock/deploy/__init__.py
     - sherlock/deploy/helpers.py
     - sherlock/deploy/model.py
-    - sherlock/__init__.py
     - sherlock/scripts/generate_confusion_matrix.py
     outs:
     - model_files/retrained_sherlock_confusion.txt
+  update deps:
+    cmd: pipenv run python update_deps.py
+    deps:
+    - sherlock
+    - update_deps.py
